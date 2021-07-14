@@ -1,0 +1,161 @@
+<!--begin::Brand-->
+<div class="brand flex-column-auto" id="kt_brand" [ngClass]="brandClasses">
+  <!--begin::Logo-->
+  <a routerLink="/" class="brand-logo">
+    <!-- <h3>POWERUSER</h3> -->
+    <!-- <img alt="Logo" [attr.src]="headerLogo" /> -->
+    <img src="./assets/media/logos/betexch.in.1.png" class="max-h-70px" alt="" />
+  </a>
+  <!--end::Logo-->
+
+  <ng-container *ngIf="asideSelfMinimizeToggle">
+    <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
+      <span
+        [inlineSVG]="
+          './assets/media/svg/icons/Navigation/Angle-double-left.svg'
+        "
+        cacheSVG="true"
+        class="svg-icon svg-icon-xl"
+      ></span>
+    </button>
+  </ng-container>
+</div>
+<!--end::Brand-->
+
+<!--begin::Aside Menu-->
+<div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+  <ng-container *ngIf="disableAsideSelfDisplay">
+    <!--begin::Header Logo-->
+    <a routerLink="/">
+      <img alt="Logo" [attr.src]="headerLogo" />
+    </a>
+    <!--end::Header Logo-->
+  </ng-container>
+  <!--begin::Menu Container-->
+  <div
+    id="kt_aside_menu"
+    class="aside-menu"
+    [ngClass]="asideMenuCSSClasses"
+    data-menu-vertical="1"
+    [attr.data-menu-scroll]="asideMenuScroll"
+    [attr.data-menu-dropdown]="asideMenuDropdown"
+    data-menu-dropdown-timeout="500"
+  >
+    <!-- begin::Menu Nav -->
+    <ul class="menu-nav" [ngClass]="ulCSSClasses">
+      <!-- begin::1 Level -->
+      <li
+        class="menu-item"
+        aria-haspopup="true"
+        routerLinkActive="menu-item-active"
+      >
+        <a class="menu-link" routerLink="/dashboard" routerLinkActive="active">
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Design/Layers.svg'"
+            cacheSVG="true"
+            class="svg-icon menu-icon"
+          ></span>
+          <span class="menu-text" translate="MENU.DASHBOARD"></span>
+        </a>
+      </li>
+      <!-- end::1 Level -->
+
+      <!-- begin::1 Level -->
+      <li
+        class="menu-item"
+        aria-haspopup="true"
+        routerLinkActive="menu-item-active"
+      >
+        <a class="menu-link" routerLink="/builder" routerLinkActive="active">
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Home/Library.svg'"
+            cacheSVG="true"
+            class="svg-icon menu-icon"
+          ></span>
+          <!-- <span class="menu-text">Layout Builder</span> -->
+          <span class="menu-text">Power-User1</span>
+
+        </a>
+      </li>
+      <!-- end::1 Level -->
+
+      <!-- Components -->
+      <!-- begin::section -->
+      <!-- <li class="menu-section">
+        <h4 class="menu-text">Components</h4>
+        <i class="menu-icon flaticon-more-v2"></i>
+      </li> -->
+      <!-- end:: section -->
+
+      <!-- Material-UI -->
+      <!-- begin::1 Level -->
+
+      <!-- end::1 Level -->
+
+      <!-- Ng-Bootstrap -->
+      <!-- begin::1 Level -->
+
+      <!-- end::1 Level -->
+
+      <!-- Applications -->
+      <!-- begin::section -->
+      <!-- <li class="menu-section">
+        <h4 class="menu-text">Applications</h4>
+        <i class="menu-icon flaticon-more-v2"></i>
+      </li> -->
+      <!-- end:: section -->
+
+      <!-- ECommerce -->
+      <!-- begin::1 Level -->
+
+      <!-- end::1 Level -->
+
+      <!-- User Management -->
+      <!-- begin::1 Level -->
+
+      <!-- end::1 Level -->
+
+      <!-- begin::1 Level -->
+      <!-- <li
+        class="menu-item"
+        aria-haspopup="true"
+        routerLinkActive="menu-item-active"
+      >
+        <a
+          class="menu-link"
+          routerLink="/user-profile"
+          routerLinkActive="active"
+        >
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Communication/Add-user.svg'"
+            cacheSVG="true"
+            class="svg-icon menu-icon"
+          ></span>
+          <span class="menu-text">User Profile</span>
+        </a>
+      </li> -->
+      <!-- end::1 Level -->
+
+      <!-- Custom -->
+      <!-- begin::section -->
+      <!-- <li class="menu-section">
+        <h4 class="menu-text">Custom</h4>
+        <i class="menu-icon flaticon-more-v2"></i>
+      </li> -->
+      <!-- end:: section -->
+
+      <!-- Wizards -->
+      <!-- begin::1 Level -->
+
+      <!-- end::1 Level -->
+
+      <!-- Errors -->
+      <!-- begin::1 Level -->
+
+      <!-- end::1 Level -->
+    </ul>
+    <!-- end::Menu Nav -->
+  </div>
+  <!--end::Menu Container-->
+</div>
+<!--end::Aside Menu-->

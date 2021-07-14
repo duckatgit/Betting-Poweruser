@@ -1,0 +1,138 @@
+:host {
+  width: 100%;
+  @media (min-width: 992px) {
+    .login-form {
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.login-form.login-signin form h3 {
+  font-family: "Bebas Neue";
+  font-weight: normal !important;
+  font-size: 36px !important;
+  line-height: 44px;
+}
+
+.login-form.login-signin form .sm-head {
+  font-family: "Bebas Neue";
+  font-weight: normal !important;
+  font-size: 22px !important;
+  line-height: 28px;
+  letter-spacing: 0.6px;
+}
+.login-form.login-signin .form-group label {
+  font-family: "Bebas Neue";
+}
+.login-form.login-signin button {
+  font-family: "Lato";
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-form.login-signin .forgot-password {
+  font-family: "Lato";
+}
+.Copyright {
+  font-family: "Lato";
+}
+::ng-deep .login.login-1 .login-aside {
+  max-width: 550px !important;
+}
+::ng-deep .custom-outline .mat-form-field-infix {
+  border-bottom: 2px solid #eee;
+}
+::ng-deep .mat-focused .mat-form-field-infix {
+  border-bottom: none !important;
+}
+
+@media screen and (max-width: 991px) {
+  ::ng-deep .login.login-1 .login-aside {
+    max-width: inherit !important;
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  ::ng-deep .login.login-1 .login-aside {
+    width: 100%;
+  }
+  .login-form.login-signin form h3 {
+    font-size: 30px !important;
+    line-height: 38px;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  line-height: 14px;
+  margin: 0 10px;
+  display: inline-block;
+}
+label {
+  color: #bbb;
+  font-size: 11px;
+  text-transform: uppercase;
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  top: 14px;
+  padding: 0 2px;
+  pointer-events: none;
+  background: #fff;
+  -webkit-transition: -webkit-transform 100ms ease;
+  -moz-transition: -moz-transform 100ms ease;
+  -o-transition: -o-transform 100ms ease;
+  -ms-transition: -ms-transform 100ms ease;
+  transition: transform 100ms ease;
+  -webkit-transform: translateY(-20px);
+  -moz-transform: translateY(-20px);
+  -o-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+input {
+  font-size: 13px;
+  color: #555;
+  outline: none;
+  border: 1px solid #bbb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  position: relative;
+}
+input:invalid + label {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+input:focus {
+  border-color: #2b96f1;
+}
+input:focus + label {
+  color: #2b96f1;
+  -webkit-transform: translateY(-20px);
+  -moz-transform: translateY(-20px);
+  -o-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+.form-group .input-wrapper,
+.form-group .input-wrapper input {
+  width: 100%;
+  border-color: #2b96f1;
+}
+.form-group .input-wrapper label {
+  color: #2b96f1;
+}
+.fv-plugins-message-container {
+  margin-left: 10px;
+}

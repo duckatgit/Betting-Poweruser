@@ -1,0 +1,95 @@
+table {
+  width: 100%;
+}
+button.table-td-btn {
+  background: #31ade7;
+  // border: none;
+}
+.upper-col-section {
+  width: 100%;
+  overflow: auto;
+}
+.upper-col-section tr th,
+.upper-col-section tr td {
+  white-space: nowrap;
+  padding: 0 7px;
+}
+.btn {
+  margin: 5px;
+}
+/*------------------------------------------*/
+
+.static-tyable tr.mat-header-row {
+  height: 40px;
+  background: #fcfcfc;
+}
+.static-tyable tr.mat-header-row th{
+  height: 40px;
+  background: #fcfcfc;
+  border-right: 1px solid #ececec;
+  text-align: center;
+}
+.static-tyable .form-control {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #b7b7b7;
+}
+.static-tyable td {
+  text-align: center;
+  width: 12.5% !important;
+  border-right: 1px solid #ececec;
+}
+.static-tyable td:last-child {
+  width: 25% !important;
+}
+.static-tyable button {
+  padding: 4px 9px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  min-width: 77px;
+}
+.margiin {
+  display: inline-block;
+  width: 50%;
+}
+.static-tyable button.btn.btn-primary, .static-tyable button.btn.btn-primary:hover {
+  background: #2FADE7;
+  border-color: #2FADE7;
+}
+
+.static-tyable .btn.btn-warning, .static-tyable .btn.btn-warning:hover {
+  background-color: #FB9800;
+  border-color: #FB9800;
+}
+.static-tyable button.btn.btn-success, .static-tyable button.btn.btn-success:hover {
+  background: #87BB33;
+  border-color: #87bb33;
+}
+
+@media screen and (max-width:992px){
+table.static-tyable {
+  margin-top: 20px;
+}
+}
+
+
+@media screen and (max-width:1160px){
+  .static-tyable .form-control {
+    padding: 0 1px;
+}
+}
+
+@media screen and (max-width:1024px){
+  .static-tyable td {
+    min-width: 130px !important;
+}
+.static-tyable td:last-child {
+  width: 260px !important;
+}
+.margiin {
+  width: 130px;
+}
+}

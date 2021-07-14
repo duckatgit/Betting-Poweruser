@@ -1,0 +1,33 @@
+.upper-col-section {
+  width: 100%;
+  overflow: auto;
+}
+.upper-col-section tr th,
+.upper-col-section tr td {
+  white-space: nowrap;
+  padding: 0 7px;
+}
+button.table-td-btn {
+  background: #31ade7;
+  border: none;
+  min-width: inherit;
+  padding: 0 10px;
+  margin: 0 20px;
+}
+.mat-icon {
+  line-height: 24px;
+  color: #fff;
+}
+
+table {
+  width: 100%;
+}
+::ng-deep .upper-col-section table.mat-table tbody tr > td:nth-child(1) {
+  width: 10% !important;
+}
+
+@media screen and (max-width: 991px) {
+  ::ng-deep .header-mobile-fixed .wrapper {
+    padding-top: 80px;
+  }
+}
