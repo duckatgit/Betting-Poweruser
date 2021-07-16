@@ -44,8 +44,9 @@ form.main-group .form-group select:focus {
   position: inherit;
   box-shadow: none;
 }
+
 ::ng-deep mat-card.height-card {
-    height: calc(100vh - 170px);
+  height: calc(100vh - 110px);
     padding-top: 0;
     margin-bottom: 0 !important;
 }
@@ -72,7 +73,7 @@ form.main-group.flex-wrap.justify-content-center {
 .form-cover {
     width: 100%;
     overflow: auto;
-    height: calc(100vh - 315px);
+    height: calc(100vh - 258px);
 }
 // ::ng-deep form.main-group {
 //   max-height: 315px;

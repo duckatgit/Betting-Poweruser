@@ -9,11 +9,11 @@
     (ngSubmit)="submit()"
   >
     <!--begin::Title-->
-    <div class="pb-13 pt-lg-0 pt-5">
+    <div class="pb-13 pt-lg-0 pt-5" style="padding-bottom: 10px !important;">
       <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">
         Welcome to Poweruser.
       </h3>
-      <span class="text-muted font-size-h4 sm-head"
+      <!-- <span class="text-muted font-size-h4 sm-head"
         >New Here?
         <a
           routerLink="/auth/registration"
@@ -21,7 +21,7 @@
           class="text-primary font-weight-bolder"
           >{{ "AUTH.GENERAL.SIGNUP_BUTTON" | translate }}</a
         >
-      </span>
+      </span> -->
     </div>
     <!--end::Title-->
 
@@ -49,7 +49,7 @@
     <!--begin::Form group-->
     <div class="form-group">
  <!-- <label class="font-size-h6 font-weight-bolder text-dark">Username</label> -->
- <div class="input-wrapper">
+ <div class="input-wrapper" style="margin: 0 !important;">
   <label for="user" >user name</label>
   <input type="email" 
 
@@ -141,7 +141,7 @@
         formControlName="password"
         [ngClass]="{ 'is-invalid': loginForm.controls['password'].invalid }"
       /> -->
-      <div class="input-wrapper">
+      <div class="input-wrapper" style="margin: 0 !important;">
         <label for="password" >password</label>
         <input type="password" 
       
@@ -196,13 +196,13 @@
         Sign In
       </button>
 
-      <a
+      <!-- <a
       routerLink="/auth/forgot-password"
       class="text-primary font-size-h6 font-weight-bolder forgot-password text-hover-primary"
       id="kt_login_forgot"
     >
       Forgot Password ?
-    </a>
+    </a> -->
 
       <!-- <button
         type="button"
@@ -222,9 +222,9 @@
   </form>
   <!--end::Form-->
 
-  <p class="m-0 p-0 pt-3 Copyright text-center">
+  <!-- <p class="m-0 p-0 pt-3 Copyright text-center">
     Copyright @ Sports Gaming Limmited 2021.
-  </p>
+  </p> -->
 
 </div>
 <!--end::Signin-->

@@ -4,3 +4,7 @@
     bottom: 0;
   }
 }
+
+::ng-deep app-footer#kt_footer {
+  display: none !important;
+}
