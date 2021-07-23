@@ -21,7 +21,7 @@ const routes: Routes = [
           import("./builder/builder.module").then((m) => m.BuilderModule),
       },
       {
-        path: "poweruser",
+        path: "match-bets",
         component: PowerUserComponent,
       },
       {

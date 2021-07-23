@@ -18,13 +18,14 @@
             <mat-icon (click)="ActionIcon()">arrow_drop_down</mat-icon>
           </button>
           <mat-menu #belowMenu="matMenu" yPosition="below">
-            <button mat-menu-item>Update Match Bets</button>
+            <button routerLink="/match-bets" mat-menu-item>
+              Update Match Bets
+            </button>
             <button mat-menu-item>Update session Bets</button>
-            <button mat-menu-item>Update scores</button>
+            <button routerLink="/updatescore" mat-menu-item>
+              Update scores
+            </button>
           </mat-menu>
-          <!-- <button class="table-td-btn">
-          <mat-icon (click)="ActionIcon()">arrow_drop_down</mat-icon>
-        </button> -->
         </td>
       </tr>
 
