@@ -8,6 +8,8 @@ import {
 import { FormBuilder, NgForm, Validators } from "@angular/forms";
 import { LayoutService } from "../../_metronic/core/";
 import KTLayoutExamples from "../../../assets/js/layout/extended/examples";
+import { Router } from "@angular/router";
+import { CreatematchService } from "src/app/modules/auth/_services/creatematch.service";
 
 @Component({
   selector: "app-builder",
@@ -18,9 +20,11 @@ export class BuilderComponent implements OnInit {
   Creatematchform;
 
   constructor(
+    private router: Router,
     private layout: LayoutService,
     private el: ElementRef,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private creatematchsvc: CreatematchService
   ) {
     this.Creatematchform = this.fb.group({
       matchcode: ["", [Validators.required]],
@@ -39,10 +43,32 @@ export class BuilderComponent implements OnInit {
       team10: ["", [Validators.required]],
       team11: ["", [Validators.required]],
       team12: ["", [Validators.required]],
+      select: ["", [Validators.required]],
     });
   }
 
   ngOnInit(): void {}
 
-  onSubmit() {}
+  cancel() {
+    this.router.navigate(["/dashboard"]);
+  }
+
+  onSubmit() {
+    const matchobj = this.Creatematchform.value;
+    if (this.Creatematchform.valid) {
+      console.log(this.Creatematchform.value);
+      // this.Creatematchform.reset();
+      this.creatematchsvc.creatematch(matchobj).subscribe(
+        (response) => {
+          console.log("response", response);
+          this.Creatematchform.reset();
+        },
+        (error) => {
+          console.log("error", error);
+        }
+      );
+    } else {
+      this.Creatematchform.markAllAsTouched();
+    }
+  }
 }

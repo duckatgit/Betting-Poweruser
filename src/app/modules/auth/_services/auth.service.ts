@@ -1,14 +1,15 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
-import { map, catchError, switchMap, finalize } from 'rxjs/operators';
-import { UserModel } from '../_models/user.model';
-import { AuthModel } from '../_models/auth.model';
-import { AuthHTTPService } from './auth-http';
-import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { Injectable, OnDestroy } from "@angular/core";
+import { Observable, BehaviorSubject, of, Subscription } from "rxjs";
+import { map, catchError, switchMap, finalize } from "rxjs/operators";
+import { UserModel } from "../_models/user.model";
+import { AuthModel } from "../_models/auth.model";
+import { AuthHTTPService } from "./auth-http";
+import { environment } from "src/environments/environment";
+import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService implements OnDestroy {
   // private fields
@@ -21,7 +22,6 @@ export class AuthService implements OnDestroy {
   currentUserSubject: BehaviorSubject<UserModel>;
   isLoadingSubject: BehaviorSubject<boolean>;
 
-
   get currentUserValue(): UserModel {
     return this.currentUserSubject.value;
   }
@@ -32,7 +32,8 @@ export class AuthService implements OnDestroy {
 
   constructor(
     private authHttpService: AuthHTTPService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.currentUserSubject = new BehaviorSubject<UserModel>(undefined);
@@ -43,28 +44,46 @@ export class AuthService implements OnDestroy {
   }
 
   // public methods
-  login(email: string, password: string): Observable<UserModel> {
+  login(username: string, password: string): Observable<UserModel> {
     this.isLoadingSubject.next(true);
-    return this.authHttpService.login(email, password).pipe(
+    return this.authHttpService.login(username, password).pipe(
       map((auth: AuthModel) => {
         const result = this.setAuthFromLocalStorage(auth);
         return result;
       }),
       switchMap(() => this.getUserByToken()),
       catchError((err) => {
-        console.error('err', err);
+        console.error("err", err);
         return of(undefined);
       }),
       finalize(() => this.isLoadingSubject.next(false))
     );
   }
 
-  logout() {
-    localStorage.removeItem(this.authLocalStorageToken);
-    this.router.navigate(['/auth/login'], {
-      queryParams: {},
-    });
+  // new changes
+  getToken() {
+    return localStorage.getItem("accessToken");
   }
+  isLoggedIn(): boolean {
+    if (this.getToken()) {
+      return true;
+    } else {
+      return false;
+    }
+    // return this.getToken() !== null;
+  }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(["./auth/login"]);
+  }
+  // new changes End
+
+  // logout() {
+  //   localStorage.removeItem(this.authLocalStorageToken);
+  //   this.router.navigate(["/auth/login"], {
+  //     queryParams: {},
+  //   });
+  // }
 
   getUserByToken(): Observable<UserModel> {
     const auth = this.getAuthFromLocalStorage();
@@ -95,7 +114,7 @@ export class AuthService implements OnDestroy {
       }),
       switchMap(() => this.login(user.email, user.password)),
       catchError((err) => {
-        console.error('err', err);
+        console.error("err", err);
         return of(undefined);
       }),
       finalize(() => this.isLoadingSubject.next(false))

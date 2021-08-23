@@ -1,196 +1,380 @@
 <mat-card class="mat-col-card height-card">
   <h2 class="m-0 p-0 mb-4 pb-4 mt-4 text-center main-head">Create Match</h2>
   <div class="form-cover">
-  <form
-    [formGroup]="Creatematchform"
-    (ngSubmit)="onSubmit()"
-    class="main-group flex-wrap justify-content-center"
-  >
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
-        >Match Code</label
-      >
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="matchcode"
-      />
-    </div>
+    <form
+      [formGroup]="Creatematchform"
+      (ngSubmit)="onSubmit()"
+      class="main-group flex-wrap justify-content-center"
+    >
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Match Code</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="matchcode"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['matchcode'].errors?.required &&
+              Creatematchform?.controls['matchcode'].touched
+            "
+            >Match code is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
-        >Match Name</label
-      >
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        formControlName="matchname"
-        placeholder=""
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Match Name</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            formControlName="matchname"
+            placeholder=""
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['matchname'].errors?.required &&
+              Creatematchform?.controls['matchname'].touched
+            "
+            >Match Name is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
-        >Match Date</label
-      >
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        formControlName="matchdate"
-        placeholder=""
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Match Date</label
+        >
+        <div class="label-input">
+          <input
+            type="date"
+            class="form-control"
+            id="exampleFormControlInput1"
+            formControlName="matchdate"
+            placeholder=""
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['matchdate'].errors?.required &&
+              Creatematchform?.controls['matchdate'].touched
+            "
+            >Match Date is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
-        >Match Time</label
-      >
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="matchtime"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Match Time</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="matchtime"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['matchtime'].errors?.required &&
+              Creatematchform?.controls['matchtime'].touched
+            "
+            >Match Time is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 1</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team1"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 1</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team1"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team1'].errors?.required &&
+              Creatematchform?.controls['team1'].touched
+            "
+            >Team1 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 2</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team2"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 2</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team2"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team2'].errors?.required &&
+              Creatematchform?.controls['team2'].touched
+            "
+            >Team2 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 3</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team3"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 3</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team3"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team3'].errors?.required &&
+              Creatematchform?.controls['team3'].touched
+            "
+            >Team3 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 4</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team4"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 4</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team4"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team4'].errors?.required &&
+              Creatematchform?.controls['team4'].touched
+            "
+            >Team4 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 5</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team5"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 5</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team5"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team5'].errors?.required &&
+              Creatematchform?.controls['team5'].touched
+            "
+            >Team5 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 6</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team6"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 6</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team6"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team6'].errors?.required &&
+              Creatematchform?.controls['team6'].touched
+            "
+            >Team6 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 7</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team7"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 7</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team7"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team7'].errors?.required &&
+              Creatematchform?.controls['team7'].touched
+            "
+            >Team7 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 8</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team8"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 8</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team8"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team8'].errors?.required &&
+              Creatematchform?.controls['team8'].touched
+            "
+            >Team8 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 9</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team9"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 9</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team9"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team9'].errors?.required &&
+              Creatematchform?.controls['team9'].touched
+            "
+            >Team9 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 10</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team10"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 10</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team10"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team10'].errors?.required &&
+              Creatematchform?.controls['team10'].touched
+            "
+            >Team10 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 11</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team11"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 11</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team11"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team11'].errors?.required &&
+              Creatematchform?.controls['team11'].touched
+            "
+            >Team11 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <div class="form-group d-flex flex-wrap align-items-center mb-4">
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Team 12</label>
-      <input
-        type="email"
-        class="form-control"
-        id="exampleFormControlInput1"
-        placeholder=""
-        formControlName="team12"
-      />
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
+          >Team 12</label
+        >
+        <div class="label-input">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder=""
+            formControlName="team12"
+            class="w-100"
+          />
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['team12'].errors?.required &&
+              Creatematchform?.controls['team12'].touched
+            "
+            >Team12 is required
+          </mat-error>
+        </div>
+      </div>
 
-    <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
+      <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
       <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
         >Match Max Amount</label
       >
@@ -202,7 +386,7 @@
       />
     </div> -->
 
-    <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
+      <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
       <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
         >Session Max Amount</label
       >
@@ -214,7 +398,7 @@
       />
     </div> -->
 
-    <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
+      <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
       <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
         >Match Delay Time</label
       >
@@ -226,7 +410,7 @@
       />
     </div> -->
 
-    <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
+      <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
       <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
         >Session Delay Time</label
       >
@@ -238,42 +422,69 @@
       />
     </div> -->
 
-    <div
-      class="
-        form-group
-        d-flex
-        flex-wrap
-        align-items-center
-        mb-4 footer
-      "
-    >
-      <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
-        >Match Type</label
-      >
-      <!-- <input type="email" class="form-control" id="exampleFormControlInput1" placeholder=""> -->
-      <select class="form-select" aria-label="Default select example">
-        <option selected>select Match Type</option>
-        <option value="1">One Day</option>
-        <option value="2">Test Match</option>
-        <option value="3">T20</option>
-      </select>
-    </div>
+      <div class="form-group d-flex flex-wrap align-items-center mb-4 footer">
+        <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
+          >Match Type</label
+        >
+        <!-- <input type="email" class="form-control" id="exampleFormControlInput1" placeholder=""> -->
+        <div class="label-input">
+          <select
+            class="form-select w-100"
+            aria-label="Default select example"
+            formControlName="select"
+          >
+            <option selected>select Match Type</option>
+            <option value="1">One Day</option>
+            <option value="2">Test Match</option>
+            <option value="3">T20</option>
+          </select>
+          <mat-error
+            *ngIf="
+              Creatematchform?.controls['select'].errors?.required &&
+              Creatematchform?.controls['select'].touched
+            "
+            >Match Type is required
+          </mat-error>
+        </div>
+      </div>
 
-  </form>
-  
+      <!-- <div class="text-center w-100 footer-saved">
+        <div class="text-center less-width">
+          <div class="form-btn">
+            <button
+              type="submit"
+              class="btn btn-primary text-weight-bold mr-3 save"
+            >
+              Save
+            </button>
 
-</div>
-<div class="text-center w-100 footer-saved">
-  <div class="text-center less-width">
-<div class="form-btn">
-  <button type="button" class="btn btn-primary text-weight-bold mr-3 save">
-    Save
-  </button>
+            <button type="button" class="btn btn-light text-weight-bold cancel">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="text-center w-100 footer-saved"> -->
 
-  <button type="button" class="btn btn-light text-weight-bold cancel">
-    Cancel
-  </button>
-</div>
-</div>
-</div>
+      <!-- </div> -->
+      <div class="text-center less-width">
+        <div class="form-btn">
+          <button
+            type="submit"
+            class="btn btn-primary text-weight-bold mr-3 save"
+          >
+            Save
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-light text-weight-bold cancel"
+            (click)="cancel()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </mat-card>

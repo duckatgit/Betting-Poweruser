@@ -4,10 +4,11 @@
 
 export const environment = {
   production: false,
-  appVersion: 'v726demo1',
-  USERDATA_KEY: 'authf649fc9a5f55',
+  appVersion: "v726demo1",
+  USERDATA_KEY: "authf649fc9a5f55",
   isMockEnabled: true,
-  apiUrl: 'https://your-domain.com/api'
+  apiUrl: "https://your-domain.com/api",
+  base_url: "http://139.59.30.115:9092",
 };
 
 /*

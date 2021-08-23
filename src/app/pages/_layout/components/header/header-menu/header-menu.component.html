@@ -21,6 +21,34 @@
       </ng-container>
     </a>
   </li>
+
+  <!-- begin assign roles  -->
+  <li class="menu-item menu-item-rel" routerLinkActive="menu-item-active">
+    <a class="menu-link" routerLink="/assign-role" routerLinkActive="active">
+      <span class="menu-text">Assign Role</span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+
+  <!-- create Poweruser  -->
+  <li class="menu-item menu-item-rel" routerLinkActive="menu-item-active">
+    <a
+      class="menu-link"
+      routerLink="/create-poweruser"
+      routerLinkActive="active"
+    >
+      <span class="menu-text">Create User</span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+  <!-- End create Poweruser  -->
+
+  <!-- End assign roles  -->
+
   <!-- end::1 Level -->
 
   <!-- Classic submenu -->

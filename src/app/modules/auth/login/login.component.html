@@ -9,7 +9,7 @@
     (ngSubmit)="submit()"
   >
     <!--begin::Title-->
-    <div class="pb-13 pt-lg-0 pt-5" style="padding-bottom: 10px !important;">
+    <div class="pb-13 pt-lg-0 pt-5" style="padding-bottom: 10px !important">
       <h3 class="font-weight-bolder text-dark font-size-h4 font-size-h1-lg">
         Welcome to Poweruser.
       </h3>
@@ -48,18 +48,17 @@
 
     <!--begin::Form group-->
     <div class="form-group">
- <!-- <label class="font-size-h6 font-weight-bolder text-dark">Username</label> -->
- <div class="input-wrapper" style="margin: 0 !important;">
-  <label for="user" >user name</label>
-  <input type="email" 
-
-  name="email"
-  formControlName="email"
-  autocomplete="off"
-  [ngClass]="{ 'is-invalid': loginForm.controls['email'].invalid }"
-  >
- 
-</div>
+      <!-- <label class="font-size-h6 font-weight-bolder text-dark">Username</label> -->
+      <div class="input-wrapper" style="margin: 0 !important">
+        <label for="user">user name</label>
+        <input
+          type="text"
+          name="username"
+          formControlName="username"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': loginForm.controls['username'].invalid }"
+        />
+      </div>
 
       <!-- <input
         class="form-control form-control-solid h-auto py-5 px-5"
@@ -69,7 +68,7 @@
         autocomplete="off"
         [ngClass]="{ 'is-invalid': loginForm.controls['email'].invalid }"
       /> -->
-  <!-- <mat-form-field appearance="outline" class="custom-outline">
+      <!-- <mat-form-field appearance="outline" class="custom-outline">
         <mat-label class="font-size-h6 font-weight-bolder text-dark">Username</mat-label>
         <input matInput placeholder="Placeholder"           
         type="email"
@@ -86,78 +85,50 @@
         [ngTemplateOutlet]="formError"
         [ngTemplateOutletContext]="{
           validation: 'required',
-          message: 'Email is required',
-          control: loginForm.controls['email']
+          message: 'Username is required',
+          control: loginForm.controls['username']
         }"
-      ></ng-container>      
+      ></ng-container>
       <ng-container
         [ngTemplateOutlet]="formError"
         [ngTemplateOutletContext]="{
-          validation: 'email',
-          message: 'Email is invalid',
-          control: loginForm.controls['email']
+          validation: 'username',
+          message: 'username is invalid',
+          control: loginForm.controls['username']
         }"
       ></ng-container>
       <ng-container
         [ngTemplateOutlet]="formError"
         [ngTemplateOutletContext]="{
           validation: 'minLength',
-          message: 'Email should have at least 3 symbols',
-          control: loginForm.controls['email']
+          message: 'username should have at least 3 symbols',
+          control: loginForm.controls['username']
         }"
       ></ng-container>
       <ng-container
         [ngTemplateOutlet]="formError"
         [ngTemplateOutletContext]="{
           validation: 'maxLength',
-          message: 'Email should have maximum 360 symbols',
-          control: loginForm.controls['email']
+          message: 'username should have maximum 360 symbols',
+          control: loginForm.controls['username']
         }"
       ></ng-container>
     </div>
-    <!--end::Form group-->
+    <!--end:: username Form group-->
 
-    <!--begin::Form group-->
+    <!--begin:: password Form group-->
     <div class="form-group">
-      <!-- <div class="d-flex justify-content-between mt-n5"> -->
-        <!-- <label class="font-size-h6 font-weight-bolder text-dark pt-5"
-          >Password</label -->
-      
-        <!-- <a
-          routerLink="/auth/forgot-password"
-          class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5"
-          id="kt_login_forgot"
-        >
-          Forgot Password ?
-        </a> -->
-      <!-- </div> -->
-
-
-      <!-- <input
-        class="form-control form-control-solid h-auto py-5 px-5"
-        type="password"
-        name="password"
-        autocomplete="off"
-        formControlName="password"
-        [ngClass]="{ 'is-invalid': loginForm.controls['password'].invalid }"
-      /> -->
-      <div class="input-wrapper" style="margin: 0 !important;">
-        <label for="password" >password</label>
-        <input type="password" 
-      
-        name="password"
-        formControlName="password"
-        autocomplete="off"
-        [ngClass]="{ 'is-invalid': loginForm.controls['password'].invalid }"
-        >
-       
+      <div class="input-wrapper" style="margin: 0 !important">
+        <label for="password">password</label>
+        <input
+          type="password"
+          name="password"
+          formControlName="password"
+          autocomplete="off"
+          [ngClass]="{ 'is-invalid': loginForm.controls['password'].invalid }"
+        />
       </div>
-      <!-- <mat-form-field appearance="outline" class="custom-outline">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Placeholder">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        <mat-hint>Hint</mat-hint>
-      </mat-form-field> -->
+
       <ng-container
         [ngTemplateOutlet]="formError"
         [ngTemplateOutletContext]="{
@@ -186,11 +157,28 @@
     <!--end::Form group-->
 
     <!--begin::Action-->
-    <div class="pb-lg-0 p-0 m-0 d-flex flex-wrap align-items-center justify-content-between">
+    <div
+      class="
+        pb-lg-0
+        p-0
+        m-0
+        d-flex
+        flex-wrap
+        align-items-center
+        justify-content-between
+      "
+    >
       <button
         type="submit"
         id="kt_login_signin_submit"
-        class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
+        class="
+          btn btn-primary
+          font-weight-bolder font-size-h6
+          px-8
+          py-4
+          my-3
+          mr-3
+        "
         [disabled]="loginForm.invalid"
       >
         Sign In
@@ -225,7 +213,6 @@
   <!-- <p class="m-0 p-0 pt-3 Copyright text-center">
     Copyright @ Sports Gaming Limmited 2021.
   </p> -->
-
 </div>
 <!--end::Signin-->
 

@@ -1,0 +1,37 @@
+<mat-card>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field appearance="fill">
+        <mat-label>Assign Role</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let role of Role" [value]="role.value">
+            {{ role.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- <div class="col-6">
+      <mat-form-field appearance="fill">
+        <mat-label>Assign Role</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let role of Role" [value]="role.value">
+            {{ role.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div> -->
+
+  <!-- <select
+    class="form-select w-100"
+    aria-label="Default select example"
+    formControlName="select"
+  >
+    <option selected>select Match Type</option>
+    <option value="1">One Day</option>
+    <option value="2">Test Match</option>
+    <option value="3">T20</option>
+  </select> -->
+</mat-card>

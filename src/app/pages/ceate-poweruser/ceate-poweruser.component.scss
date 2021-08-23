@@ -1,0 +1,35 @@
+form.input-form {
+  width: 50%;
+}
+form.input-form .form-group label {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #3f4254;
+  float: left;
+  width: 30%;
+}
+form.input-form .label-input {
+  width: 60%;
+}
+form.input-form input {
+  height: 34px;
+}
+form.input-form button.btn.btn-primary.text-weight-bold.mr-3.save {
+  border-radius: 0 !important;
+  min-width: 70px;
+  background: #87bb33;
+  border-color: #87bb33;
+  padding: 4px 0;
+  margin: 20px;
+}
+::ng-deep mat-card {
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  background: #fff;
+  width: 100%;
+  float: left;
+  padding: 20px;
+}
+.error {
+  color: red;
+}

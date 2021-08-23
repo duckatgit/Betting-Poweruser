@@ -25,6 +25,8 @@ import { PowerUserComponent } from './power-user/power-user.component';
 import { SharedModule } from '../modules/shared/shared.module';
 import { PowerUser1Component } from './power-user1/power-user1.component';
 import { UpdateScoreComponent } from './update-score/update-score.component';
+import { AssignRoleComponent } from './assign-role/assign-role.component';
+import { CeatePoweruserComponent } from './ceate-poweruser/ceate-poweruser.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { UpdateScoreComponent } from './update-score/update-score.component';
     PowerUserComponent,
     PowerUser1Component,
     UpdateScoreComponent,
+    AssignRoleComponent,
+    CeatePoweruserComponent,
   ],
   imports: [
     CommonModule,

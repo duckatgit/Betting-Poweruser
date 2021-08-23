@@ -47,15 +47,15 @@ form.main-group .form-group select:focus {
 
 ::ng-deep mat-card.height-card {
   height: calc(100vh - 110px);
-    padding-top: 0;
-    margin-bottom: 0 !important;
+  padding-top: 0;
+  margin-bottom: 0 !important;
 }
 h2.main-head {
   font-size: 18px;
   color: #1e1e2d;
-  padding: 20px 0 12px!important;
+  padding: 20px 0 12px !important;
   margin-top: 0 !important;
-  width:50%;
+  width: 50%;
   font-family: Poppins, Helvetica, "sans-serif";
   letter-spacing: -0.8px;
   font-weight: 800;
@@ -67,13 +67,13 @@ form.main-group.flex-wrap.justify-content-center {
   width: 50%;
 }
 .text-center.less-width {
-  width: 50%;
+  width: 100%;
 }
 /*-----------------------------------*/
 .form-cover {
-    width: 100%;
-    overflow: auto;
-    height: calc(100vh - 258px);
+  width: 100%;
+  overflow: auto;
+  height: calc(100vh - 258px);
 }
 // ::ng-deep form.main-group {
 //   max-height: 315px;
@@ -84,6 +84,24 @@ form.main-group.flex-wrap.justify-content-center {
 }
 .form-control {
   border: 1px solid #b7b7b7;
+}
+/*---20-08-2021----*/
+.label-input {
+  width: 60%;
+}
+.label-input input,
+.label-input select {
+  margin-bottom: 4px;
+}
+.footer select.form-select {
+  border-color: rgb(118, 118, 118) !important;
+}
+.text-center.less-width .form-btn {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 /*----Scrollbar-----*/
 .form-cover::scrollbar {
@@ -112,15 +130,15 @@ form.main-group.flex-wrap.justify-content-center {
 /*----Scrollbar-----*/
 
 @media screen and (max-width: 1120px) {
-form.main-group.flex-wrap.justify-content-center {
-  width: 80%;
-}
-h2.main-head {
-  width: 80%;
-}
-.text-center.less-width {
-  width: 80% !important;
-}
+  form.main-group.flex-wrap.justify-content-center {
+    width: 80%;
+  }
+  h2.main-head {
+    width: 80%;
+  }
+  .text-center.less-width {
+    width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -160,17 +178,17 @@ h2.main-head {
   margin: 20px 0 0px;
   padding: 15px 0 0;
 }
- button.save {
+button.save {
   margin: 0 !important;
   border-radius: 0 !important;
   min-width: 70px;
-  background: #87BB33;
+  background: #87bb33;
   border-color: #87bb33;
   padding: 4px 0;
 }
 button.save:hover {
   background-color: #fff !important;
-  color: #87BB33 !important;
+  color: #87bb33 !important;
   border-color: #87bb33 !important;
 }
 button.cancel {
@@ -180,38 +198,42 @@ button.cancel {
   min-width: 70px;
 }
 
+@media screen and (max-width: 600px) {
+  .form-cover {
+    width: 100%;
+    overflow: auto;
+  }
+  .form-cover::-webkit-scrollbar {
+    display: none;
+  }
 
+  form.main-group {
+    width: 100% !important;
+  }
+  form.main-group .form-group input {
+    min-width: 230px;
+  }
+  form.main-group .form-group label {
+    width: 180px;
+    min-width: 1px;
+    max-width: 200px;
+  }
+  form.main-group .form-group select {
+    min-width: 230px;
+  }
+  .text-center.less-width {
+    width: 100%;
+  }
+  h2.main-head {
+    width: 90%;
+  }
+  .text-center.less-width {
+    width: 100% !important;
+  }
+}
 
-@media screen and (max-width:600px){
-.form-cover {
-  width: 100%;
-  overflow: auto;
-}
-.form-cover::-webkit-scrollbar {
-  display: none;
-}
-
-form.main-group{
-  width: 100% !important;
-}
-form.main-group .form-group input {
-  min-width: 230px;
-}
-form.main-group .form-group label {
-  width: 180px;
-  min-width: 1px;
-  max-width: 200px;
-}
-form.main-group .form-group select {
-  min-width: 230px;
-}
-.text-center.less-width {
-  width: 100%;
-}
-h2.main-head {
-  width: 90%;
-}
-.text-center.less-width {
-  width: 100% !important;
-}
+@media screen and (max-width: 575px) {
+  .label-input {
+    width: 100%;
+  }
 }
