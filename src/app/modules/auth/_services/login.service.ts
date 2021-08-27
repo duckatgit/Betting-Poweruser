@@ -7,7 +7,9 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class LoginService {
-  Url = environment.base_url + "/login-service" + "/api/login";
+  Url = environment.base_url + "/login-service" + "/api/auth/login";
+
+  // {{login_service_url}}/api/auth/login
 
   constructor(private http: HttpClient) {}
   loginuser(data: any) {

@@ -21,10 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   //   username: "admin@demo.com",
   //   password: "demo",
   // };
-  // defaultAuth: any = {
-  //   username: "",
-  //   password: "",
-  // };
+
   loginForm: FormGroup;
   hasError: boolean;
   returnUrl: string;
@@ -98,7 +95,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   // setup for login api
   submit() {
-    debugger;
     this.hasError = false;
     const loginobj = this.loginForm.value;
     console.log(loginobj);
@@ -110,8 +106,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             localStorage.setItem("accessToken", response);
             this.router.navigate(["./dashboard"]);
           } else {
-            // this.hasError = true;
-            alert("invalid user");
+            this.hasError = true;
           }
         },
         (error) => {
