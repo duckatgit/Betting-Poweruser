@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { MatchService } from "src/app/modules/auth/_services/creatematch.service";
 
 export interface PeriodicElement {
   code: number;
@@ -12,56 +14,13 @@ export interface PeriodicElement {
   // action:any;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    position: 1,
-    code: 1139,
-    Date: "6-7-2021",
-    name: "Test Match Demo",
-    Time: "11:30 PM",
-    matchType: "Test Match",
-    Declare: "No",
-    Won: "No",
-  },
-  {
-    position: 2,
-    code: 1180,
-    Date: "6-7-2021",
-    name: "Match Demo",
-    Time: "11:30 PM",
-    matchType: "One day Match",
-    Declare: "Yes",
-    Won: "Draw",
-  },
-  // {
-  //   position: 3,
-  //   code: 894,
-  //   Date: "6-7-2021",
-  //   name: "Test Demo",
-  //   Time: "11:30 PM",
-  //   matchType: "T20",
-  //   Declare: "No",
-  //   Won: "No",
-  // },
-  // {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  // {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  // {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  // {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  // {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  // {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  // {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 @Component({
   selector: "app-power-user",
   templateUrl: "./power-user.component.html",
   styleUrls: ["./power-user.component.scss"],
 })
 export class PowerUserComponent implements OnInit {
-  matchType= [
-    {name:"Test A",value:1},
-    {name:"Test B",value:2},
-    {name:"Test C",value:3},
-  ];
+ 
 
   displayedColumns: string[] = [
     "action",
@@ -71,21 +30,27 @@ export class PowerUserComponent implements OnInit {
     "lockallbtn",
     "unlockallbtn",
     "matchstatus",
-    // "position",
-    // "code",
-    // "Date",
-    // "name",
-    // "Time",
-    // "matchType",
-    // "Declare",
-    // "Won",
   ];
-  dataSource = ELEMENT_DATA;
-  constructor() {}
+  dataSource = [];
+  constructor(
+    private matchService: MatchService,
+    private activatedParam: ActivatedRoute
+  ) {
+    
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.activatedParam.paramMap.subscribe((params: any) => {
+    if (params?.params?.id) {
+      this.dataSource = this.matchService.getMatchById(params?.params?.id);
+    }
+  });}
 
-  update() {}
+  update() {
+    const data={'khai':Number(this.dataSource[0].khai),'lagai':Number(this.dataSource[0].khai),'matchId':this.dataSource[0].matchId}
+    this.matchService.updateMatchBet(data).subscribe((response)=>{
+      console.log(response)
+    })
+  }
   lockall() {}
   unlockall() {}
   lock() {}

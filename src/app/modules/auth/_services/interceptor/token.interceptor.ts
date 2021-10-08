@@ -4,9 +4,11 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpErrorResponse,
 } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { AuthService } from "../auth.service";
+import { tap } from 'rxjs/operators';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) {}
@@ -22,6 +24,18 @@ export class TokenInterceptor implements HttpInterceptor {
         },
       });
     }
-    return next.handle(request);
+    return next.handle(request).pipe(
+      tap(
+        () => {},
+        (err: any) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status !== 403) {
+              return;
+            }
+            this.auth.logout();
+          }
+        }
+      )
+    );
   }
 }

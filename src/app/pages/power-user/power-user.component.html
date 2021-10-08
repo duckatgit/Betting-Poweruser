@@ -9,11 +9,11 @@
         <th mat-header-cell *matHeaderCellDef>Favorite</th>
       </tr>
       <tr>
-        <td mat-cell *matCellDef="let row" style="">
+        <td mat-cell *matCellDef="let row;let element;" style="">
           <select class="form-select form-control" aria-label="Default select example">
-            <option selected>select Match Type</option>
-            <option *ngFor="let match of matchType" [value]="match.value">
-              {{match.name}}
+            <option selected>select Team</option>
+            <option *ngFor="let team of element.teams" [value]="team.teamId">
+              {{team.teamName}}
             </option>
             <!-- <option value="1">Test A</option>
             <option value="2">Test B</option>
@@ -36,8 +36,8 @@
         <th mat-header-cell *matHeaderCellDef>Khai</th>
       </tr>
       <tr>
-        <td mat-cell *matCellDef="let row" style="">
-          <input type="text" class="form-control"/>
+        <td mat-cell *matCellDef="let row;let element;" style="">
+          <input type="text" class="form-control" [(ngModel)]="element.khai"/>
         </td>
       </tr>
 
@@ -50,8 +50,8 @@
         <th mat-header-cell *matHeaderCellDef>Lagai</th>
       </tr>
       <tr>
-        <td mat-cell *matCellDef="let row" style="">
-          <input type="text" class="form-control"/>
+        <td mat-cell *matCellDef="let row;let element;" style="">
+          <input type="text" class="form-control" [(ngModel)]="element.lagai"/>
         </td>
       </tr>
 

@@ -1,11 +1,8 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Subscription, Observable } from "rxjs";
-import { first } from "rxjs/operators";
-import { UserModel } from "../_models/user.model";
 import { AuthService } from "../_services/auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { LoginService } from "../_services/login.service";
 
 @Component({
   selector: "app-login",
@@ -13,14 +10,6 @@ import { LoginService } from "../_services/login.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  defaultAuth: any = {
-    username: "puser",
-    password: "superman",
-  };
-  // defaultAuth: any = {
-  //   username: "admin@demo.com",
-  //   password: "demo",
-  // };
 
   loginForm: FormGroup;
   hasError: boolean;
@@ -33,7 +22,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private loginsvc: LoginService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -59,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   initForm() {
     this.loginForm = this.fb.group({
       username: [
-        this.defaultAuth.username,
+        null,
         Validators.compose([
           Validators.required,
           // Validators.email,
@@ -68,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         ]),
       ],
       password: [
-        this.defaultAuth.password,
+        null,
         Validators.compose([
           Validators.required,
           Validators.minLength(3),
@@ -78,32 +66,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  // submit() {
-  //   this.hasError = false;
-  //   const loginSubscr = this.authService
-  //     .login(this.f.username.value, this.f.password.value)
-  //     .pipe(first())
-  //     .subscribe((user: UserModel) => {
-  //       if (user) {
-  //         this.router.navigate([this.returnUrl]);
-  //       } else {
-  //         this.hasError = true;
-  //       }
-  //     });
-  //   this.unsubscribe.push(loginSubscr);
-  // }
-
   // setup for login api
   submit() {
     this.hasError = false;
     const loginobj = this.loginForm.value;
-    console.log(loginobj);
     if (this.loginForm.valid) {
-      this.loginsvc.loginuser(loginobj).subscribe(
+      this.authService.login(loginobj).subscribe(
         (response) => {
-          console.log("response", response);
           if (response) {
-            localStorage.setItem("accessToken", response);
             this.router.navigate(["./dashboard"]);
           } else {
             this.hasError = true;

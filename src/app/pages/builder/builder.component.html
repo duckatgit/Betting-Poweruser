@@ -1,12 +1,8 @@
 <mat-card class="mat-col-card height-card">
   <h2 class="m-0 p-0 mb-4 pb-4 mt-4 text-center main-head">Create Match</h2>
   <div class="form-cover">
-    <form
-      [formGroup]="Creatematchform"
-      (ngSubmit)="onSubmit()"
-      class="main-group flex-wrap justify-content-center"
-    >
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
+    <form [formGroup]="Creatematchform" (ngSubmit)="onSubmit()" class="main-group flex-wrap justify-content-center">
+      <!-- <div class="form-group d-flex flex-wrap align-items-start mb-4">
         <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
           >Match Code</label
         >
@@ -27,352 +23,73 @@
             >Match code is required
           </mat-error>
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Match Name</label
-        >
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1">Match Name</label>
         <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            formControlName="matchname"
-            placeholder=""
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['matchname'].errors?.required &&
-              Creatematchform?.controls['matchname'].touched
-            "
-            >Match Name is required
+          <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="matchName"
+            placeholder="" class="w-100" />
+          <mat-error *ngIf="
+              Creatematchform?.controls['matchName'].errors?.required &&
+              Creatematchform?.controls['matchName'].touched
+            ">Match Name is required
           </mat-error>
         </div>
       </div>
 
       <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Match Date</label
-        >
+        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1">Match Date</label>
         <div class="label-input">
-          <input
-            type="date"
-            class="form-control"
-            id="exampleFormControlInput1"
-            formControlName="matchdate"
-            placeholder=""
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['matchdate'].errors?.required &&
-              Creatematchform?.controls['matchdate'].touched
-            "
-            >Match Date is required
+          <input  [owlDateTime]="dt1" readonly [owlDateTimeTrigger]="dt1" class="form-control" id="exampleFormControlInput1" formControlName="dateTime"
+            placeholder="" class="w-100" />
+            <owl-date-time #dt1></owl-date-time>
+
+          <mat-error *ngIf="
+              Creatematchform?.controls['dateTime'].errors?.required &&
+              Creatematchform?.controls['dateTime'].touched
+            ">Match Date is required
           </mat-error>
         </div>
       </div>
 
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Match Time</label
-        >
+
+      <div class="form-group d-flex flex-wrap align-items-start mb-4" *ngFor="let team of teams; let i = index">
+        <label class="m-0 p-0 pl-4 pt-2 pb-2">{{team.teamName}}</label>
         <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="matchtime"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['matchtime'].errors?.required &&
-              Creatematchform?.controls['matchtime'].touched
-            "
-            >Match Time is required
+          <div class="d-flex">
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=""
+            formControlName="{{team.teamControl}}" class="w-100" />
+            <div class="d-flex" *ngIf="i==0">
+          <button type="button" (click)="addTeam()" id="kt_login_signin_submit"  class="
+                  btn btn-primary
+                  font-weight-bolder font-size-h6
+                  px-3
+                  py-1
+                  mx-3
+                  ">
+            +
+          </button>
+          <button type="button" (click)="removeTeam()" id="kt_login_signin_submit" *ngIf="teams.length>2" class="
+                  btn btn-primary
+                  font-weight-bolder font-size-h6
+                  px-3
+                  py-1
+                  mx-3
+                  ">
+            -
+          </button>
+        </div>
+        </div>
+          <mat-error *ngIf="
+              Creatematchform?.controls[team.teamControl].errors?.required &&
+              Creatematchform?.controls[team.teamControl].touched
+            ">{{team.teamName}} is required
           </mat-error>
         </div>
       </div>
 
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 1</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team1"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team1'].errors?.required &&
-              Creatematchform?.controls['team1'].touched
-            "
-            >Team1 is required
-          </mat-error>
-        </div>
-      </div>
 
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 2</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team2"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team2'].errors?.required &&
-              Creatematchform?.controls['team2'].touched
-            "
-            >Team2 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 3</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team3"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team3'].errors?.required &&
-              Creatematchform?.controls['team3'].touched
-            "
-            >Team3 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 4</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team4"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team4'].errors?.required &&
-              Creatematchform?.controls['team4'].touched
-            "
-            >Team4 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 5</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team5"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team5'].errors?.required &&
-              Creatematchform?.controls['team5'].touched
-            "
-            >Team5 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 6</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team6"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team6'].errors?.required &&
-              Creatematchform?.controls['team6'].touched
-            "
-            >Team6 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 7</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team7"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team7'].errors?.required &&
-              Creatematchform?.controls['team7'].touched
-            "
-            >Team7 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 8</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team8"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team8'].errors?.required &&
-              Creatematchform?.controls['team8'].touched
-            "
-            >Team8 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 9</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team9"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team9'].errors?.required &&
-              Creatematchform?.controls['team9'].touched
-            "
-            >Team9 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 10</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team10"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team10'].errors?.required &&
-              Creatematchform?.controls['team10'].touched
-            "
-            >Team10 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 11</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team11"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team11'].errors?.required &&
-              Creatematchform?.controls['team11'].touched
-            "
-            >Team11 is required
-          </mat-error>
-        </div>
-      </div>
-
-      <div class="form-group d-flex flex-wrap align-items-start mb-4">
-        <label class="m-0 p-0 pl-4 pt-2 pb-2" for="exampleFormControlInput1"
-          >Team 12</label
-        >
-        <div class="label-input">
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder=""
-            formControlName="team12"
-            class="w-100"
-          />
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['team12'].errors?.required &&
-              Creatematchform?.controls['team12'].touched
-            "
-            >Team12 is required
-          </mat-error>
-        </div>
-      </div>
 
       <!-- <div class="form-group d-flex flex-wrap align-items-center mb-4">
       <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
@@ -423,28 +140,19 @@
     </div> -->
 
       <div class="form-group d-flex flex-wrap align-items-center mb-4 footer">
-        <label class="m-0 p-0 pl-4" for="exampleFormControlInput1"
-          >Match Type</label
-        >
+        <label class="m-0 p-0 pl-4" for="exampleFormControlInput1">Match Type</label>
         <!-- <input type="email" class="form-control" id="exampleFormControlInput1" placeholder=""> -->
         <div class="label-input">
-          <select
-            class="form-select w-100"
-            aria-label="Default select example"
-            formControlName="select"
-          >
-            <!-- <option selected >select Match Type</option> -->
-            <option selected>select Match Type</option>
-            <option value="1">One Day</option>
-            <option value="2">Test Match</option>
-            <option value="3">T20</option>
+          <select class="form-select w-100" aria-label="Default select example" formControlName="matchType">
+            <option selected value=0>Select Match Type</option>
+            <option value=1>One Day</option>
+            <option value=2>Test Match</option>
+            <option value=3>T20</option>
           </select>
-          <mat-error
-            *ngIf="
-              Creatematchform?.controls['select'].errors?.required &&
-              Creatematchform?.controls['select'].touched
-            "
-            >Match Type is required
+          <mat-error *ngIf="
+              Creatematchform?.controls['matchType'].errors?.required &&
+              Creatematchform?.controls['matchType'].touched
+            ">Match Type is required
           </mat-error>
         </div>
       </div>
@@ -470,18 +178,11 @@
       <!-- </div> -->
       <div class="text-center less-width">
         <div class="form-btn">
-          <button
-            type="submit"
-            class="btn btn-primary text-weight-bold mr-3 save"
-          >
+          <button type="submit" class="btn btn-primary text-weight-bold mr-3 save">
             Save
           </button>
 
-          <button
-            type="button"
-            class="btn btn-light text-weight-bold cancel"
-            (click)="cancel()"
-          >
+          <button type="button" class="btn btn-light text-weight-bold cancel" (click)="cancel()">
             Cancel
           </button>
         </div>

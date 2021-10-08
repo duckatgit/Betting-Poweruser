@@ -7,9 +7,10 @@ import {
 } from "@angular/core";
 import { FormBuilder, NgForm, Validators } from "@angular/forms";
 import { LayoutService } from "../../_metronic/core/";
-import KTLayoutExamples from "../../../assets/js/layout/extended/examples";
 import { Router } from "@angular/router";
-import { CreatematchService } from "src/app/modules/auth/_services/creatematch.service";
+import { MatchService } from "src/app/modules/auth/_services/creatematch.service";
+import { ToastrService } from "ngx-toastr";
+import { AuthService } from "src/app/modules/auth";
 
 @Component({
   selector: "app-builder",
@@ -18,32 +19,34 @@ import { CreatematchService } from "src/app/modules/auth/_services/creatematch.s
 })
 export class BuilderComponent implements OnInit {
   Creatematchform;
+  teams: any[] = [
+    { teamName: "Team 1", teamControl: "team01" },
+    { teamName: "Team 2", teamControl: "team02" },
+  ];
 
   constructor(
     private router: Router,
-    private layout: LayoutService,
-    private el: ElementRef,
     private fb: FormBuilder,
-    private creatematchsvc: CreatematchService
+    private creatematchsvc: MatchService,
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {
     this.Creatematchform = this.fb.group({
-      matchcode: ["", [Validators.required]],
-      matchname: ["", [Validators.required]],
-      matchdate: ["", [Validators.required]],
-      matchtime: ["", [Validators.required]],
-      team1: ["", [Validators.required]],
-      team2: ["", [Validators.required]],
-      team3: ["", [Validators.required]],
-      team4: ["", [Validators.required]],
-      team5: ["", [Validators.required]],
-      team6: ["", [Validators.required]],
-      team7: ["", [Validators.required]],
-      team8: ["", [Validators.required]],
-      team9: ["", [Validators.required]],
-      team10: ["", [Validators.required]],
-      team11: ["", [Validators.required]],
-      team12: ["", [Validators.required]],
-      select: ["", [Validators.required]],
+      matchName: ["", [Validators.required]],
+      dateTime: ["", [Validators.required]],
+      team01: ["", [Validators.required]],
+      team02: ["", [Validators.required]],
+      team03: [""],
+      team04: [""],
+      team05: [""],
+      team06: [""],
+      team07: [""],
+      team08: [""],
+      team09: [""],
+      team10: [""],
+      team11: [""],
+      team12: [""],
+      matchType: [0, [Validators.required]],
     });
   }
 
@@ -53,14 +56,41 @@ export class BuilderComponent implements OnInit {
     this.router.navigate(["/dashboard"]);
   }
 
+  addTeam() {
+    let count = this.teams.length;
+    if (count < 12) {
+      count = count + 1;
+      this.teams.push({
+        teamName: "Team " + count,
+        teamControl: "team" + (count < 10 ? "0" : "") + count,
+      });
+    } else {
+      this.toastr.error("Max 12 team can be selected");
+    }
+  }
+
+  removeTeam() {
+    this.teams.pop();
+  }
+
   onSubmit() {
     const matchobj = this.Creatematchform.value;
     if (this.Creatematchform.valid) {
-      console.log(this.Creatematchform.value);
-      // this.Creatematchform.reset();
+      const matchObj = this.Creatematchform.value;
+      matchObj.dateTime = new Date(
+        this.Creatematchform.controls.dateTime.value
+      ).toISOString();
+      matchObj.createdBy = this.authService.currentUserValue.userId;
+      matchObj.matchMaxAmount = 5000;
+      matchObj.sessionMaxAmount = 1000;
+      matchObj.streamId = 1;
+      matchObj.status = true;
+      matchObj.matchDelayTime = 5;
+      matchObj.sessionDelayTime = 5;
+      matchObj.matchCast = 1;
       this.creatematchsvc.creatematch(matchobj).subscribe(
         (response) => {
-          console.log("response", response);
+          this.toastr.success("Match Created Successfully");
           this.Creatematchform.reset();
         },
         (error) => {

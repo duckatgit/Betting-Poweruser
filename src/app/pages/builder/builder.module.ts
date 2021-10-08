@@ -8,6 +8,7 @@ import { FormsModule } from "@angular/forms";
 import { NgbNavModule, NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { HighlightModule } from "ngx-highlightjs";
 import { SharedModule } from "src/app/modules/shared/shared.module";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [BuilderComponent],
@@ -19,6 +20,8 @@ import { SharedModule } from "src/app/modules/shared/shared.module";
     NgbNavModule,
     SharedModule,
     NgbTooltipModule,
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule,
     RouterModule.forChild([
       {
         path: "",

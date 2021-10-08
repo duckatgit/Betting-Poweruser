@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER } from "@angular/core";
+import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -10,15 +10,15 @@ import { InlineSVGModule } from "ng-inline-svg";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { AuthService } from "./modules/auth/_services/auth.service";
 import { TokenInterceptor } from "./modules/auth/_services/interceptor/token.interceptor";
-import { environment } from "src/environments/environment";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 // Highlight JS
 import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
 import { SplashScreenModule } from "./_metronic/partials/layout/splash-screen/splash-screen.module";
 // #fake-start#
-import { FakeAPIService } from "./_fake/fake-api.service";
 import { SharedModule } from "./modules/shared/shared.module";
+import { ToastrModule } from 'ngx-toastr';
+import { AuthService } from './modules/auth';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -41,17 +41,12 @@ function appInitializer(authService: AuthService) {
     HttpClientModule,
     HighlightModule,
     ClipboardModule,
-    // #fake-start#
-    environment.isMockEnabled
-      ? HttpClientInMemoryWebApiModule.forRoot(FakeAPIService, {
-          passThruUnknownUrl: true,
-          dataEncapsulation: false,
-        })
-      : [],
-    // #fake-end#
     AppRoutingModule,
     InlineSVGModule.forRoot(),
     NgbModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true, timeOut: 2000
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

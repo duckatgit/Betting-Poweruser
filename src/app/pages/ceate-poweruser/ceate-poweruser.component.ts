@@ -11,7 +11,6 @@ export class CeatePoweruserComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.Createuserform = this.fb.group({
       username: ["", [Validators.required]],
-      autoincrement: ["", [Validators.required]],
       Password: ["", [Validators.required]],
     });
   }

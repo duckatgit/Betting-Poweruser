@@ -7,9 +7,9 @@ import { LayoutService } from '../../../../core';
 })
 export class DashboardWrapperComponent implements OnInit {
   demo: string;
-  constructor(private layout: LayoutService) {}
+  constructor() {
+  }
 
   ngOnInit(): void {
-    this.demo = this.layout.getProp('demo');
   }
 }
