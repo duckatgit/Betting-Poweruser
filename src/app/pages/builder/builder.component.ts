@@ -1,16 +1,9 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-} from "@angular/core";
-import { FormBuilder, NgForm, Validators } from "@angular/forms";
-import { LayoutService } from "../../_metronic/core/";
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { MatchService } from "src/app/modules/auth/_services/creatematch.service";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "src/app/modules/auth";
+import { MatchService } from "src/app/modules/auth/_services/creatematch.service";
 
 @Component({
   selector: "app-builder",

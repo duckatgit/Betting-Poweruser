@@ -1,11 +1,10 @@
-import { Injectable, OnDestroy } from "@angular/core";
-import { Observable, BehaviorSubject, of, Subscription } from "rxjs";
-import { map, catchError, switchMap, finalize } from "rxjs/operators";
-import { UserModel } from "../_models/user.model";
-import { AuthModel } from "../_models/auth.model";
-import { environment } from "src/environments/environment";
-import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
+import { Injectable, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
+import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
+import { catchError, finalize, map, switchMap } from "rxjs/operators";
+import { environment } from "src/environments/environment";
+import { UserModel } from "../_models/user.model";
 
 @Injectable({
   providedIn: "root",
@@ -48,7 +47,7 @@ export class AuthService implements OnDestroy {
         const result = this.setAuthFromLocalStorage(auth);
         return result;
       }),
-      // switchMap(() => this.getUserByToken()),
+      switchMap(() => this.getUserByToken()),
       catchError((err) => {
         console.error("err", err);
         return of(undefined);
@@ -61,17 +60,10 @@ export class AuthService implements OnDestroy {
   getToken() {
     return localStorage.getItem("accessToken");
   }
-  isLoggedIn(): boolean {
-    if (this.getToken()) {
-      return true;
-    } else {
-      return false;
-    }
-    // return this.getToken() !== null;
-  }
+
   logout() {
     localStorage.clear();
-    this.currentUserValue(null);
+    this.currentUserValue = null;
     this.router.navigate(["./auth/login"]);
   }
 

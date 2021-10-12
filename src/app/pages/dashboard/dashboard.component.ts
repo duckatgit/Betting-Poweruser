@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from '@angular/router';
-import { MatchService } from "src/app/modules/auth/_services/creatematch.service";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 export interface PeriodicElement {
   code: number;
@@ -32,22 +31,21 @@ export class DashboardComponent implements OnInit {
     "Won",
   ];
 
-  constructor(
-    private activatedParam: ActivatedRoute
-  ) { this.activatedParam.data.subscribe((data:any)=>{
-    this.dataSource=data.matchList
-  })}
-
-  ngOnInit(): void {
+  constructor(private activatedParam: ActivatedRoute) {
+    this.activatedParam.data.subscribe((data: any) => {
+      this.dataSource = data.matchList;
+    });
   }
-  getMatchType(type){
-    switch(type){
+
+  ngOnInit(): void {}
+  getMatchType(type) {
+    switch (type) {
       case 1:
-        return "One Day"
+        return "One Day";
       case 2:
-        return "Test Match"
+        return "Test Match";
       case 3:
-        return "T20"
+        return "T20";
     }
   }
 }

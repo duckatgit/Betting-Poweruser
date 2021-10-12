@@ -1,25 +1,21 @@
+import { CommonModule } from "@angular/common";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { APP_INITIALIZER, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { CommonModule } from "@angular/common";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-import { ClipboardModule } from "ngx-clipboard";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateModule } from "@ngx-translate/core";
 import { InlineSVGModule } from "ng-inline-svg";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { TokenInterceptor } from "./modules/auth/_services/interceptor/token.interceptor";
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { ClipboardModule } from "ngx-clipboard";
 // Highlight JS
 import { HighlightModule, HIGHLIGHT_OPTIONS } from "ngx-highlightjs";
-import { SplashScreenModule } from "./_metronic/partials/layout/splash-screen/splash-screen.module";
-// #fake-start#
+import { ToastrModule } from "ngx-toastr";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { AuthService } from "./modules/auth";
+import { TokenInterceptor } from "./modules/auth/_services/interceptor/token.interceptor";
 import { SharedModule } from "./modules/shared/shared.module";
-import { ToastrModule } from 'ngx-toastr';
-import { AuthService } from './modules/auth';
-// #fake-end#
+import { SplashScreenModule } from "./_metronic/partials/layout/splash-screen/splash-screen.module";
 
 function appInitializer(authService: AuthService) {
   return () => {
@@ -45,7 +41,8 @@ function appInitializer(authService: AuthService) {
     InlineSVGModule.forRoot(),
     NgbModule,
     ToastrModule.forRoot({
-      preventDuplicates: true, timeOut: 2000
+      preventDuplicates: true,
+      timeOut: 2000,
     }),
   ],
   providers: [

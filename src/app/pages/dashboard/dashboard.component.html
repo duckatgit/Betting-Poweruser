@@ -10,12 +10,8 @@
       </tr>
       <tr>
         <td mat-cell *matCellDef="let row;let element;" style="width: 20%">
-          <button
-            mat-button
-            [matMenuTriggerFor]="belowMenu"
-            class="table-td-btn"
-          >
-            <mat-icon >arrow_drop_down</mat-icon>
+          <button mat-button [matMenuTriggerFor]="belowMenu" class="table-td-btn">
+            <mat-icon>arrow_drop_down</mat-icon>
           </button>
           <mat-menu #belowMenu="matMenu" yPosition="below">
             <button [routerLink]="['/match-bet',element.matchId]" mat-menu-item>
@@ -29,8 +25,8 @@
         </td>
       </tr>
 
-      <tr></tr
-    ></ng-container>
+      <tr></tr>
+    </ng-container>
 
     <!-- Position Column -->
     <ng-container matColumnDef="position">

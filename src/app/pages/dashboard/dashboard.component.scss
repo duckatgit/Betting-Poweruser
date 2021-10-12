@@ -22,9 +22,6 @@ button.table-td-btn {
 table {
   width: 100%;
 }
-::ng-deep .upper-col-section table.mat-table tbody tr > td:nth-child(1) {
-  width: 10% !important;
-}
 
 @media screen and (max-width: 991px) {
   ::ng-deep .header-mobile-fixed .wrapper {

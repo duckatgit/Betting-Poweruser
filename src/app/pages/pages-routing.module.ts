@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { MatchService } from '../modules/auth/_services/creatematch.service';
+import { MatchService } from "../modules/auth/_services/creatematch.service";
 import { AssignRoleComponent } from "./assign-role/assign-role.component";
 import { CeatePoweruserComponent } from "./ceate-poweruser/ceate-poweruser.component";
 import { PowerUserComponent } from "./power-user/power-user.component";
@@ -17,9 +17,9 @@ const routes: Routes = [
         path: "dashboard",
         loadChildren: () =>
           import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
-          resolve: {
-            matchList: MatchService
-          }
+        resolve: {
+          matchList: MatchService,
+        },
       },
       {
         path: "builder",
@@ -30,8 +30,8 @@ const routes: Routes = [
         path: "match-bet/:id",
         component: PowerUserComponent,
         resolve: {
-          matchList: MatchService
-        }
+          matchList: MatchService,
+        },
       },
       {
         path: "assign-role",

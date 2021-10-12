@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-import { BehaviorSubject, Observable } from "rxjs";
+import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
@@ -25,6 +25,12 @@ export class MatchService {
       data
     );
   }
+  updateMatchStatus(data) {
+    return this.http.put(
+      environment.apiUrl + "/api/matches/updateStatus",
+      data
+    );
+  }
 
   creatematch(data: any) {
     return this.http.post(this.Url, data);
@@ -32,16 +38,16 @@ export class MatchService {
 
   getMatchList() {
     return this.http
-    .get<any>(environment.apiUrl + "/api/matches?completion=live")
-    .pipe(
-      map((matches: any) => {
-        matches.map((game: any) => {
-          game.time = game?.dateTime.replace(/\s/g, "T");
-        });
-       this.matches=matches
-        return matches;
-      })
-    );
+      .get<any>(environment.apiUrl + "/api/matches?completion=live")
+      .pipe(
+        map((matches: any) => {
+          matches.map((game: any) => {
+            game.time = game?.dateTime.replace(/\s/g, "T");
+          });
+          this.matches = matches;
+          return matches;
+        })
+      );
   }
 
   getMatchById(id: number) {
