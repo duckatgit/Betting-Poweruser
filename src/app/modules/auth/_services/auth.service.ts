@@ -4,7 +4,6 @@ import { Router } from "@angular/router";
 import { BehaviorSubject, Observable, of, Subscription } from "rxjs";
 import { catchError, finalize, map, switchMap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
-import { UserModel } from "../_models/user.model";
 
 @Injectable({
   providedIn: "root",
@@ -13,13 +12,13 @@ export class AuthService implements OnDestroy {
   Url = environment.base_url + "/login-service" + "/api/auth/login";
 
   // private fields
-  private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
+  private unsubscribe: Subscription[] = [];
   private authLocalStorageToken = "accessToken";
 
   // public fields
   currentUser$: Observable<any>;
   isLoading$: Observable<boolean>;
-  currentUserSubject: BehaviorSubject<UserModel>;
+  currentUserSubject: BehaviorSubject<any>;
   isLoadingSubject: BehaviorSubject<boolean>;
 
   get currentUserValue(): any {
@@ -32,11 +31,9 @@ export class AuthService implements OnDestroy {
 
   constructor(private router: Router, private http: HttpClient) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
-    this.currentUserSubject = new BehaviorSubject<UserModel>(undefined);
+    this.currentUserSubject = new BehaviorSubject<any>(undefined);
     this.currentUser$ = this.currentUserSubject.asObservable();
     this.isLoading$ = this.isLoadingSubject.asObservable();
-    // const subscr = this.getUserByToken().subscribe();
-    // this.unsubscribe.push(subscr);
   }
 
   // public methods
@@ -58,7 +55,7 @@ export class AuthService implements OnDestroy {
 
   // new changes
   getToken() {
-    return localStorage.getItem("accessToken");
+    return localStorage.getItem(this.authLocalStorageToken);
   }
 
   logout() {

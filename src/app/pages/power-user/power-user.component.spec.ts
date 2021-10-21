@@ -1,16 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { PowerUserComponent } from "./power-user.component";
 
-import { PowerUserComponent } from './power-user.component';
-
-describe('PowerUserComponent', () => {
+describe("PowerUserComponent", () => {
   let component: PowerUserComponent;
   let fixture: ComponentFixture<PowerUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PowerUserComponent ]
-    })
-    .compileComponents();
+      declarations: [PowerUserComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +17,7 @@ describe('PowerUserComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

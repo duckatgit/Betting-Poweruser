@@ -6,120 +6,62 @@
     <thead>
       <tr>
         <th>Session</th>
-        <th>No</th>
         <th>Yes</th>
-        <th>No Rate</th>
+        <th>No</th>
         <th>Yes Rate</th>
+        <th>No Rate</th>
         <th>Open</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let session of sessions">
         <td>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Overs</option>
-            <option selected value="1">5th over</option>
-            <option value="2">10th over</option>
-            <option value="3">15th over</option>
-          </select>
+          <input type="text" readonly [ngModel]="session.sessionName" />
         </td>
         <td>
-          <input type="text" readonly />
+          <input type="text" readonly [ngModel]="session.yesRate" />
         </td>
         <td>
-          <input type="text" readonly />
+          <input type="text" readonly [ngModel]="session.noRate" />
         </td>
         <td>
-          <input type="text" />
+          <input type="text" [(ngModel)]="session.yesRate" />
         </td>
         <td>
-          <input type="text" />
+          <input type="text" [(ngModel)]="session.noRate" />
         </td>
         <td>
-          <button type="button" (click)="Updatesession()" class="btn btn-primary">Update</button>
+          <button type="button" (click)="Updatesession(session)" class="btn btn-primary">Update</button>
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Overs</option>
-            <option selected value="1">6th over</option>
-            <option value="2">10th over</option>
-            <option value="3">15th over</option>
-          </select>
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <button type="button" (click)="Updatesession()" class="btn btn-primary">Update</button>
-        </td>
-      </tr>
 
       <tr>
         <td>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Overs</option>
-            <option selected value="1">Highest</option>
-            <option value="2">10th over</option>
-            <option value="3">15th over</option>
+          <input type="text" [(ngModel)]="sessionName" />
+        </td>
+        <td>
+          <select class="form-select form-control" aria-label="Default select example" [(ngModel)]="sessionTeamId">
+            <option selected value="-1">Select Team</option>
+            <option *ngFor="let team of currentMatch.teams" [value]="team.teamId">
+              {{team.teamName}}
+            </option>
           </select>
         </td>
         <td>
-          <input type="text" />
+          <button type="button" (click)="createSession()" class="btn btn-success">Add</button>
         </td>
         <td>
-          <input type="text" />
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <button type="button" (click)="Updatesession()" class="btn btn-primary">Update</button>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="text" />
-        </td>
-        <td>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Test</option>
-            <option selected value="1">Test A</option>
-            <option value="2">Test B</option>
-            <option value="3">Text C</option>
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="sessionId">
+            <option selected value="-1">Select Session</option>
+            <option *ngFor="let session of sessions" [value]="session.sessionId">{{session.sessionName}}</option>
           </select>
         </td>
         <td>
-          <button type="button" class="btn btn-success">Add</button>
+          <button type="button" class="btn btn-warning" (click)="lockSession(true)">Lock</button>
         </td>
         <td>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Test</option>
-            <option selected value="1">Test A</option>
-            <option value="2">Test B</option>
-            <option value="3">Text C</option>
-          </select>
-        </td>
-        <td>
-          <button type="button" class="btn btn-warning">Lock</button>
-        </td>
-        <td>
-          <button type="button" class="btn btn-success">Open</button>
+          <button type="button" class="btn btn-success" (click)="lockSession(false)">Open</button>
         </td>
       </tr>
     </tbody>

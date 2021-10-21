@@ -17,8 +17,8 @@
             <button [routerLink]="['/match-bet',element.matchId]" mat-menu-item>
               Update Match Bets
             </button>
-            <button mat-menu-item>Update session Bets</button>
-            <button routerLink="/updatescore" mat-menu-item>
+            <button mat-menu-item [routerLink]="['/updatescore',element.matchId]">Update session Bets</button>
+            <button mat-menu-item>
               Update scores
             </button>
           </mat-menu>
@@ -39,8 +39,6 @@
       <th mat-header-cell *matHeaderCellDef>Code</th>
       <td mat-cell *matCellDef="let element">{{ element.matchCode }}</td>
     </ng-container>
-
-
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">

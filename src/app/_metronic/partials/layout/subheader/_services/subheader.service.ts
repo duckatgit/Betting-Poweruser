@@ -1,41 +1,40 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { BreadcrumbItemModel } from '../_models/breadcrumb-item.model';
-import { LayoutService } from '../../../../core';
-import { SubheaderModel } from '../_models/subheader.model';
+import { Injectable, OnDestroy } from "@angular/core";
+import { BehaviorSubject, Subscription } from "rxjs";
+import { LayoutService } from "../../../../core";
+import { BreadcrumbItemModel } from "../_models/breadcrumb-item.model";
+import { SubheaderModel } from "../_models/subheader.model";
 
 // kt_header_menu
 // kt_aside_menu
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class SubheaderService implements OnDestroy {
   titleSubject: BehaviorSubject<string> = new BehaviorSubject<string>(
-    'Dashboard'
+    "Dashboard"
   );
-  descriptionSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  descriptionSubject: BehaviorSubject<string> = new BehaviorSubject<string>("");
   breadCrumbsSubject: BehaviorSubject<
     BreadcrumbItemModel[]
   > = new BehaviorSubject<BreadcrumbItemModel[]>([]);
-  subheaderVersionSubject: BehaviorSubject<string> = new BehaviorSubject<
-    string
-  >('v1'); // [1-6]
+  subheaderVersionSubject: BehaviorSubject<string> = new BehaviorSubject<string>(
+    "v1"
+  ); // [1-6]
   // private fields
-  private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
-
+  private unsubscribe: Subscription[] = [];
   constructor(private layout: LayoutService) {
     this.setDefaultSubheader();
   }
 
   setDefaultSubheader() {
-    this.setSubheaderVersion(this.layout.getProp('subheader.layoutVersion'));
+    this.setSubheaderVersion(this.layout.getProp("subheader.layoutVersion"));
   }
 
   setBreadcrumbs(breadcrumbs: BreadcrumbItemModel[] = []) {
     this.breadCrumbsSubject.next(breadcrumbs);
   }
 
-  setTitle(title: string = '') {
+  setTitle(title: string = "") {
     this.titleSubject.next(title);
   }
 
@@ -43,14 +42,14 @@ export class SubheaderService implements OnDestroy {
     this.descriptionSubject.next(description);
   }
 
-  private setSubheaderVersion(version: string = 'v1') {
+  private setSubheaderVersion(version: string = "v1") {
     this.subheaderVersionSubject.next(version);
   }
 
   // use this method in SubheaderWrapper
   updateAfterRouteChanges(pathName) {
-    const aside = this.getBreadcrumbsAndTitle('kt_aside_menu', pathName);
-    const header = this.getBreadcrumbsAndTitle('kt_header_menu', pathName);
+    const aside = this.getBreadcrumbsAndTitle("kt_aside_menu", pathName);
+    const header = this.getBreadcrumbsAndTitle("kt_header_menu", pathName);
     const breadcrumbs =
       aside && aside.breadcrumbs.length > 0
         ? aside.breadcrumbs
@@ -67,15 +66,15 @@ export class SubheaderService implements OnDestroy {
 
   private getLinksFromMenu(menu): HTMLAnchorElement[] {
     const parentLiElements = Array.from(
-      menu.getElementsByClassName('menu-item-open') || []
+      menu.getElementsByClassName("menu-item-open") || []
     ) as HTMLElement[];
     const childLiElements = Array.from(
-      menu.getElementsByClassName('menu-item-active') || []
+      menu.getElementsByClassName("menu-item-active") || []
     ) as HTMLElement[];
     const result: HTMLAnchorElement[] = [];
     parentLiElements.forEach((el) => {
       const links = Array.from(
-        el.getElementsByClassName('menu-link') || []
+        el.getElementsByClassName("menu-link") || []
       ) as HTMLAnchorElement[];
       if (links && links.length > 0) {
         const aLink = links[0];
@@ -83,7 +82,7 @@ export class SubheaderService implements OnDestroy {
           aLink.href &&
           aLink.href.length &&
           aLink.href.length > 0 &&
-          aLink.innerHTML !== '/'
+          aLink.innerHTML !== "/"
         ) {
           result.push(aLink);
         }
@@ -92,7 +91,7 @@ export class SubheaderService implements OnDestroy {
 
     childLiElements.forEach((el) => {
       const links = Array.from(
-        el.getElementsByClassName('menu-link') || []
+        el.getElementsByClassName("menu-link") || []
       ) as HTMLAnchorElement[];
       if (links && links.length > 0) {
         const aLink = links[0];
@@ -100,7 +99,7 @@ export class SubheaderService implements OnDestroy {
           aLink.href &&
           aLink.href.length &&
           aLink.href.length > 0 &&
-          aLink.innerHTML !== '/'
+          aLink.innerHTML !== "/"
         ) {
           result.push(aLink);
         }
@@ -118,13 +117,13 @@ export class SubheaderService implements OnDestroy {
 
     const activeLinksArray = this.getLinksFromMenu(menu);
 
-    const activeLinks = activeLinksArray.filter((el) => el.tagName === 'A');
+    const activeLinks = activeLinksArray.filter((el) => el.tagName === "A");
     if (!activeLinks) {
       return result;
     }
 
     activeLinks.forEach((link) => {
-      const titleSpans = link.getElementsByClassName('menu-text');
+      const titleSpans = link.getElementsByClassName("menu-text");
       if (titleSpans) {
         const titleSpan = Array.from(titleSpans).find(
           (t) => t.innerHTML && t.innerHTML.trim().length > 0
@@ -143,21 +142,21 @@ export class SubheaderService implements OnDestroy {
   }
 
   private parseUrlAndReturnPathname(href): string {
-    const url = document.createElement('a');
+    const url = document.createElement("a");
     url.href =
-      'https://developer.mozilla.org:8080/en-US/search?q=URL#search-results-close-container';
+      "https://developer.mozilla.org:8080/en-US/search?q=URL#search-results-close-container";
 
     return url.pathname;
   }
 
   private getTitle(breadCrumbs, pathname) {
     if (!breadCrumbs || !pathname) {
-      return '';
+      return "";
     }
 
     const length = breadCrumbs.length;
     if (!length) {
-      return '';
+      return "";
     }
 
     return breadCrumbs[length - 1].title;

@@ -1,9 +1,9 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { DashboardComponent } from "./dashboard.component";
-import { DashboardsModule } from "../../_metronic/partials/content/dashboards/dashboards.module";
 import { SharedModule } from "src/app/modules/shared/shared.module";
+import { DashboardsModule } from "../../_metronic/partials/content/dashboards/dashboards.module";
+import { DashboardComponent } from "./dashboard.component";
 
 @NgModule({
   declarations: [DashboardComponent],

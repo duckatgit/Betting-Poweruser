@@ -1,29 +1,29 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
-  ElementRef,
-  AfterViewInit,
-  OnDestroy,
-} from '@angular/core';
+} from "@angular/core";
 import {
-  Router,
-  NavigationStart,
-  RouteConfigLoadStart,
-  RouteConfigLoadEnd,
-  NavigationEnd,
   NavigationCancel,
-} from '@angular/router';
-import { LayoutService } from '../../../../_metronic/core';
-import KTLayoutHeader from '../../../../../assets/js/layout/base/header';
-import KTLayoutHeaderMenu from '../../../../../assets/js/layout/base/header-menu';
-import { KTUtil } from '../../../../../assets/js/components/util';
-import { Subscription, Observable, BehaviorSubject } from 'rxjs';
+  NavigationEnd,
+  NavigationStart,
+  RouteConfigLoadEnd,
+  RouteConfigLoadStart,
+  Router,
+} from "@angular/router";
+import { BehaviorSubject, Observable, Subscription } from "rxjs";
+import { KTUtil } from "../../../../../assets/js/components/util";
+import KTLayoutHeader from "../../../../../assets/js/layout/base/header";
+import KTLayoutHeaderMenu from "../../../../../assets/js/layout/base/header-menu";
+import { LayoutService } from "../../../../_metronic/core";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   headerContainerCSSClasses: string;
@@ -36,14 +36,13 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   headerMenuHTMLAttributes: any = {};
   routerLoaderTimout: any;
 
-  @ViewChild('ktHeaderMenu', { static: true }) ktHeaderMenu: ElementRef;
+  @ViewChild("ktHeaderMenu", { static: true }) ktHeaderMenu: ElementRef;
   loader$: Observable<number>;
 
   private loaderSubject: BehaviorSubject<number> = new BehaviorSubject<number>(
     0
   );
-  private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
-
+  private unsubscribe: Subscription[] = [];
   constructor(private layout: LayoutService, private router: Router) {
     this.loader$ = this.loaderSubject;
     // page progress bar percentage
@@ -74,30 +73,30 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.headerContainerCSSClasses = this.layout.getStringCSSClasses(
-      'header_container'
+      "header_container"
     );
     this.headerMenuSelfDisplay = this.layout.getProp(
-      'header.menu.self.display'
+      "header.menu.self.display"
     );
-    this.headerMenuSelfStatic = this.layout.getProp('header.menu.self.static');
-    this.asideSelfDisplay = this.layout.getProp('aside.self.display');
-    this.headerSelfTheme = this.layout.getProp('header.self.theme') || '';
+    this.headerMenuSelfStatic = this.layout.getProp("header.menu.self.static");
+    this.asideSelfDisplay = this.layout.getProp("aside.self.display");
+    this.headerSelfTheme = this.layout.getProp("header.self.theme") || "";
     this.headerLogo = this.getLogoURL();
-    this.headerMenuCSSClasses = this.layout.getStringCSSClasses('header_menu');
+    this.headerMenuCSSClasses = this.layout.getStringCSSClasses("header_menu");
     this.headerMenuHTMLAttributes = this.layout.getHTMLAttributes(
-      'header_menu'
+      "header_menu"
     );
   }
 
   private getLogoURL(): string {
-    let result = 'logo-light.png';
+    let result = "logo-light.png";
 
-    if (this.headerSelfTheme && this.headerSelfTheme === 'light') {
-      result = 'logo-dark.png';
+    if (this.headerSelfTheme && this.headerSelfTheme === "light") {
+      result = "logo-dark.png";
     }
 
-    if (this.headerSelfTheme && this.headerSelfTheme === 'dark') {
-      result = 'logo-dark.png';
+    if (this.headerSelfTheme && this.headerSelfTheme === "dark") {
+      result = "logo-dark.png";
     }
 
     return `./assets/media/logos/${result}`;
@@ -116,9 +115,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
     KTUtil.ready(() => {
       // Init Desktop & Mobile Headers
-      KTLayoutHeader.init('kt_header', 'kt_header_mobile');
+      KTLayoutHeader.init("kt_header", "kt_header_mobile");
       // Init Header Menu
-      KTLayoutHeaderMenu.init('kt_header_menu', 'kt_header_menu_wrapper');
+      KTLayoutHeaderMenu.init("kt_header_menu", "kt_header_menu_wrapper");
     });
   }
 

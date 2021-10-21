@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { MatchService } from "../modules/auth/_services/creatematch.service";
 import { AssignRoleComponent } from "./assign-role/assign-role.component";
 import { CeatePoweruserComponent } from "./ceate-poweruser/ceate-poweruser.component";
@@ -46,8 +46,11 @@ const routes: Routes = [
         component: PowerUser1Component,
       },
       {
-        path: "updatescore",
+        path: "updatescore/:id",
         component: UpdateScoreComponent,
+        resolve: {
+          matchList: MatchService,
+        },
       },
       {
         path: "",

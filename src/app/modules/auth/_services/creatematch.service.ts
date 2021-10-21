@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, switchMap } from "rxjs/operators";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -20,16 +20,27 @@ export class MatchService {
   }
 
   updateMatchBet(data) {
-    return this.http.put(
-      environment.apiUrl + "/api/matches/updateBetRates",
-      data
-    );
+    return this.http
+      .put(environment.apiUrl + "/api/matches/updateBetRates", data)
+      .pipe(
+        switchMap(() => this.getMatchList()),
+        map((response) => this.getMatchById(data.matchId))
+      );
   }
-  updateMatchStatus(data) {
-    return this.http.put(
-      environment.apiUrl + "/api/matches/updateStatus",
-      data
-    );
+
+  sessionupdate(data) {
+    return this.http.put(environment.apiUrl + "/api/sessions", data);
+  }
+
+  createSession(data) {
+    return this.http.post(environment.apiUrl + "/api/sessions", data);
+  }
+  lockSession(data) {
+    return this.http.put(environment.apiUrl + "/api/sessions/status", data);
+  }
+
+  loackMatchBet(data) {
+    return this.http.put(environment.apiUrl + "/api/matches/lockBet", data);
   }
 
   creatematch(data: any) {
@@ -49,8 +60,13 @@ export class MatchService {
         })
       );
   }
+  getSessionList(matchId) {
+    return this.http.get<any>(
+      environment.apiUrl + "/api/sessions?matchId=" + matchId + "&&status=true"
+    );
+  }
 
   getMatchById(id: number) {
-    return this.matches?.filter((match) => match.matchId == id);
+    return this.matches?.find((match) => match.matchId == id);
   }
 }
