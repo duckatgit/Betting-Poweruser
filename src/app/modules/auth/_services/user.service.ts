@@ -5,17 +5,17 @@ import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: "root",
 })
-export class SessionService {
+export class UserService {
   constructor(private http: HttpClient) {}
   // /game-power-user
   // Url: string = environment.base_url + "/game-power-user" + "/api/sessions";
-  Url: string = environment.base_url + "/game-power-user";
+  Url: string = environment.base_url + "/user-service";
 
-  createsession(data: any) {
-    return this.http.put(this.Url + "/api/sessions", data);
+  createUser(data: any) {
+    return this.http.post(this.Url + "/api/users", data);
   }
 
-  sessionupdate(data: any) {
-    return this.http.put(this.Url + "/api/sessions", data);
+  assignRoles(data: any) {
+    return this.http.put(this.Url + "/api/users/updateAdditionalRoles", data);
   }
 }

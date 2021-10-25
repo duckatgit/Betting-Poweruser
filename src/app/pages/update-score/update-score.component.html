@@ -52,7 +52,7 @@
           <button type="button" (click)="createSession()" class="btn btn-success">Add</button>
         </td>
         <td>
-          <select class="form-select" aria-label="Default select example" [(ngModel)]="sessionId">
+          <select class="form-select form-control" [(ngModel)]="sessionId">
             <option selected value="-1">Select Session</option>
             <option *ngFor="let session of sessions" [value]="session.sessionId">{{session.sessionName}}</option>
           </select>
@@ -75,29 +75,34 @@
     <tbody>
       <tr>
         <td>
-          <input type="text" />
+          <input type="text" [(ngModel)]="sessionComment" placeholder="Comment">
         </td>
         <td>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Overs</option>
-            <option selected value="1">5th overs</option>
-            <option value="2">10th overs</option>
-            <option value="3">15th overs</option>
+          <select class="form-select form-control" [(ngModel)]="betResult">
+            <option selected value="-1">Bet Result</option>
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
           </select>
         </td>
         <td>
-          <button type="button" class="btn btn-success">Declare</button>
+          <select class="form-select form-control" [(ngModel)]="sessionId">
+            <option selected value="-1">Select Session</option>
+            <option *ngFor="let session of sessions" [value]="session.sessionId">{{session.sessionName}}</option>
+          </select>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="declareSession()">Declare</button>
         </td>
         <td>
           <button type="button" class="btn btn-warning">Cancel</button>
         </td>
         <td>WON BY</td>
         <td>
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Team</option>
-            <option selected value="1">Team A</option>
-            <option value="2">Team B</option>
-            <option value="3">Team c</option>
+          <select class="form-select form-control" aria-label="Default select example" [(ngModel)]="sessionTeamId">
+            <option selected value="-1">Select Team</option>
+            <option *ngFor="let team of currentMatch.teams" [value]="team.teamId">
+              {{team.teamName}}
+            </option>
           </select>
         </td>
         <td>

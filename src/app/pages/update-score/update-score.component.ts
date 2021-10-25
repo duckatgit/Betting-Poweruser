@@ -14,6 +14,8 @@ export class UpdateScoreComponent implements OnInit {
   currentMatch: any;
   sessionTeamId: number = -1;
   sessionId: number = -1;
+  betResult: string = "-1";
+  sessionComment: string = "";
   sessions: any;
   constructor(
     private matchService: MatchService,
@@ -69,7 +71,30 @@ export class UpdateScoreComponent implements OnInit {
       };
       this.matchService.lockSession(session).subscribe(
         (response) => {
+          this.sessionId = -1;
           this.toastR.success("Session Status updated Successfully");
+        },
+        (error) => {
+          this.toastR.error("Something Went Wrong! Please try again");
+        }
+      );
+    }
+  }
+
+  declareSession() {
+    if (this.sessionId < 0) {
+      this.toastR.error("Please Select any session");
+      return;
+    } else {
+      const session = {
+        sessionId: this.sessionId,
+        betResult: this.betResult,
+        resultComment: this.sessionComment,
+      };
+      this.matchService.declareSession(session).subscribe(
+        (response) => {
+          this.sessionId = -1;
+          this.toastR.success("Session Declared Successfully");
         },
         (error) => {
           this.toastR.error("Something Went Wrong! Please try again");

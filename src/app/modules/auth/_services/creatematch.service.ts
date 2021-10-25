@@ -38,6 +38,9 @@ export class MatchService {
   lockSession(data) {
     return this.http.put(environment.apiUrl + "/api/sessions/status", data);
   }
+  declareSession(data) {
+    return this.http.put(environment.apiUrl + "/api/sessions/close", data);
+  }
 
   loackMatchBet(data) {
     return this.http.put(environment.apiUrl + "/api/matches/lockBet", data);
