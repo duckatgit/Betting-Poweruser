@@ -4,8 +4,8 @@
       <mat-form-field appearance="fill" class="w-100">
         <mat-label>Select User</mat-label>
         <mat-select [(ngModel)]="user">
-          <mat-option *ngFor="let role of roles | keyvalue" [value]="role['value']">
-            {{role['key'] }}
+          <mat-option *ngFor="let user of users" [value]="user.userId">
+            {{user.username }}
           </mat-option>
         </mat-select>
       </mat-form-field>

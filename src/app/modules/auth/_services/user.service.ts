@@ -7,8 +7,6 @@ import { environment } from "src/environments/environment";
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-  // /game-power-user
-  // Url: string = environment.base_url + "/game-power-user" + "/api/sessions";
   Url: string = environment.base_url + "/user-service";
 
   createUser(data: any) {
@@ -17,5 +15,9 @@ export class UserService {
 
   assignRoles(data: any) {
     return this.http.put(this.Url + "/api/users/updateAdditionalRoles", data);
+  }
+
+  getUsers() {
+    return this.http.get(this.Url + "/api/users/poweruser");
   }
 }

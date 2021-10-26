@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "src/app/modules/auth";
@@ -11,7 +11,7 @@ import { MatchService } from "src/app/modules/auth/_services/creatematch.service
   styleUrls: ["./builder.component.scss"],
 })
 export class BuilderComponent implements OnInit {
-  Creatematchform;
+  Creatematchform: FormGroup;
   teams: any[] = [
     { teamName: "Team 1", teamControl: "team01" },
     { teamName: "Team 2", teamControl: "team02" },

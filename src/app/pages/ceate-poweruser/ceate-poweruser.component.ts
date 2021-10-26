@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { Component } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "src/app/modules/auth/_services/user.service";
 
@@ -8,8 +8,8 @@ import { UserService } from "src/app/modules/auth/_services/user.service";
   templateUrl: "./ceate-poweruser.component.html",
   styleUrls: ["./ceate-poweruser.component.scss"],
 })
-export class CeatePoweruserComponent implements OnInit {
-  Createuserform;
+export class CeatePoweruserComponent {
+  Createuserform: FormGroup;
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -20,8 +20,6 @@ export class CeatePoweruserComponent implements OnInit {
       password: ["", [Validators.required]],
     });
   }
-
-  ngOnInit(): void {}
 
   onSubmit() {
     const userobj = this.Createuserform.value;

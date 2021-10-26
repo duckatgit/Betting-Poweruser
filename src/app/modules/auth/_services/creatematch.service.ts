@@ -12,6 +12,7 @@ export class MatchService {
   Url = environment.base_url + "/game-power-user" + "/api/matches";
   matches: any[] = [];
   constructor(private http: HttpClient) {}
+
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -35,9 +36,11 @@ export class MatchService {
   createSession(data) {
     return this.http.post(environment.apiUrl + "/api/sessions", data);
   }
+
   lockSession(data) {
     return this.http.put(environment.apiUrl + "/api/sessions/status", data);
   }
+
   declareSession(data) {
     return this.http.put(environment.apiUrl + "/api/sessions/close", data);
   }
@@ -63,6 +66,7 @@ export class MatchService {
         })
       );
   }
+
   getSessionList(matchId) {
     return this.http.get<any>(
       environment.apiUrl + "/api/sessions?matchId=" + matchId + "&&status=true"

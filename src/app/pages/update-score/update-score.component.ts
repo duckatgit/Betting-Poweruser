@@ -29,14 +29,18 @@ export class UpdateScoreComponent implements OnInit {
     this.activatedParam.paramMap.subscribe((params: any) => {
       if (params?.params?.id) {
         this.currentMatch = this.matchService.getMatchById(params?.params?.id);
-        this.matchService
-          .getSessionList(this.currentMatch.matchId)
-          .subscribe((response) => {
-            this.sessions = response;
-            this.cdr.detectChanges();
-          });
+        this.getSessions();
       }
     });
+  }
+
+  getSessions() {
+    this.matchService
+      .getSessionList(this.currentMatch.matchId)
+      .subscribe((response) => {
+        this.sessions = response;
+        this.cdr.detectChanges();
+      });
   }
 
   Updatesession(sessionData) {
@@ -59,7 +63,8 @@ export class UpdateScoreComponent implements OnInit {
       );
     }
   }
-  lockSession(status) {
+
+  lockSession(status: boolean) {
     if (this.sessionId < 0) {
       this.toastR.error("Please Select any session");
       return;
@@ -71,8 +76,13 @@ export class UpdateScoreComponent implements OnInit {
       };
       this.matchService.lockSession(session).subscribe(
         (response) => {
-          this.sessionId = -1;
           this.toastR.success("Session Status updated Successfully");
+          let session = this.sessions.find(
+            (x: { sessionId }) => x.sessionId == this.sessionId
+          );
+          session.locked = status;
+          this.sessionId = -1;
+          this.cdr.detectChanges();
         },
         (error) => {
           this.toastR.error("Something Went Wrong! Please try again");
@@ -94,6 +104,8 @@ export class UpdateScoreComponent implements OnInit {
       this.matchService.declareSession(session).subscribe(
         (response) => {
           this.sessionId = -1;
+          this.betResult = "-1";
+          this.sessionComment = "";
           this.toastR.success("Session Declared Successfully");
         },
         (error) => {
@@ -102,6 +114,7 @@ export class UpdateScoreComponent implements OnInit {
       );
     }
   }
+
   createSession() {
     if (!this.sessionName) {
       this.toastR.error("Please Enter Session Name");
@@ -115,10 +128,15 @@ export class UpdateScoreComponent implements OnInit {
         sessionName: this.sessionName,
         matchId: this.currentMatch.matchId,
         teamId: this.sessionTeamId,
+        status: true,
       };
       this.matchService.createSession(session).subscribe(
         (response) => {
           this.toastR.success("Session Created Successfully");
+          this.sessions.push(response);
+          this.sessionName = "";
+          this.sessionTeamId = -1;
+          this.cdr.detectChanges();
         },
         (error) => {
           this.toastR.error("Something Went Wrong! Please try again");

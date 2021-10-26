@@ -16,22 +16,23 @@
     <tbody>
       <tr *ngFor="let session of sessions">
         <td>
-          <input type="text" readonly [ngModel]="session.sessionName" />
+          <input type="text" disabled [ngModel]="session.sessionName" />
         </td>
         <td>
-          <input type="text" readonly [ngModel]="session.yesRate" />
+          <input type="text" disabled [ngModel]="session.yesRate" />
         </td>
         <td>
-          <input type="text" readonly [ngModel]="session.noRate" />
+          <input type="text" disabled [ngModel]="session.noRate" />
         </td>
         <td>
-          <input type="text" [(ngModel)]="session.yesRate" />
+          <input type="text" [disabled]="session.locked" [(ngModel)]="session.yesRate" />
         </td>
         <td>
-          <input type="text" [(ngModel)]="session.noRate" />
+          <input type="text" [disabled]="session.locked" [(ngModel)]="session.noRate" />
         </td>
         <td>
-          <button type="button" (click)="Updatesession(session)" class="btn btn-primary">Update</button>
+          <button type="button" [disabled]="session.locked" (click)="Updatesession(session)"
+            class="btn btn-primary">Update</button>
         </td>
       </tr>
 
@@ -93,9 +94,9 @@
         <td>
           <button type="button" class="btn btn-success" (click)="declareSession()">Declare</button>
         </td>
-        <td>
+        <!-- <td>
           <button type="button" class="btn btn-warning">Cancel</button>
-        </td>
+        </td> -->
         <td>WON BY</td>
         <td>
           <select class="form-select form-control" aria-label="Default select example" [(ngModel)]="sessionTeamId">
