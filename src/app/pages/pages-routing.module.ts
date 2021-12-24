@@ -5,6 +5,7 @@ import { AssignRoleComponent } from "./assign-role/assign-role.component";
 import { CeatePoweruserComponent } from "./ceate-poweruser/ceate-poweruser.component";
 import { PowerUserComponent } from "./power-user/power-user.component";
 import { PowerUser1Component } from "./power-user1/power-user1.component";
+import { UpdateMatchScoreComponent } from "./update-match-score/update-match-score.component";
 import { UpdateScoreComponent } from "./update-score/update-score.component";
 import { LayoutComponent } from "./_layout/layout.component";
 
@@ -46,8 +47,15 @@ const routes: Routes = [
         component: PowerUser1Component,
       },
       {
-        path: "updatescore/:id",
+        path: "updatesession/:id",
         component: UpdateScoreComponent,
+        resolve: {
+          matchList: MatchService,
+        },
+      },
+      {
+        path: "updatescore/:id",
+        component: UpdateMatchScoreComponent,
         resolve: {
           matchList: MatchService,
         },

@@ -27,6 +27,7 @@ import { LanguageSelectorComponent } from "./_layout/components/topbar/language-
 import { TopbarComponent } from "./_layout/components/topbar/topbar.component";
 import { ScriptsInitComponent } from "./_layout/init/scipts-init/scripts-init.component";
 import { LayoutComponent } from "./_layout/layout.component";
+import { UpdateMatchScoreComponent } from './update-match-score/update-match-score.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LayoutComponent } from "./_layout/layout.component";
     UpdateScoreComponent,
     AssignRoleComponent,
     CeatePoweruserComponent,
+    UpdateMatchScoreComponent,
   ],
   imports: [
     CommonModule,

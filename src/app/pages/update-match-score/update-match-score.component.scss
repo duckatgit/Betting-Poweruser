@@ -1,0 +1,46 @@
+:host {
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  .score-card-top td {
+    width: 25%;
+  }
+  .score-card-top button {
+    width: 145px;
+    height: 38px;
+    background: #30ade3;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+  }
+  .score-card-bottom button {
+    width: 108px;
+    height: 38px;
+    background: #30ade3;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+  }
+  .score-card-bottom button.color-primary {
+    height: 30px;
+    background: #fa9801;
+    font-size: 14px;
+  }
+  .score-card-bottom button.color-sucess {
+    height: 30px;
+    background: #84bc37;
+    font-size: 14px;
+  }
+  .table.score-card-top td,
+  .table.score-card-bottom td {
+    vertical-align: middle;
+  }
+  .score-card-top select,
+  .score-card-top input {
+    width: 80% !important;
+    margin: 0 auto;
+    height: 28px;
+    padding: 0px 3px;
+    font-size: 13px !important;
+  }
+}
