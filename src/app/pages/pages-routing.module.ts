@@ -6,7 +6,7 @@ import { CeatePoweruserComponent } from "./ceate-poweruser/ceate-poweruser.compo
 import { PowerUserComponent } from "./power-user/power-user.component";
 import { PowerUser1Component } from "./power-user1/power-user1.component";
 import { UpdateMatchScoreComponent } from "./update-match-score/update-match-score.component";
-import { UpdateScoreComponent } from "./update-score/update-score.component";
+import { UpdateSessionComponent } from "./update-session/update-session.component";
 import { LayoutComponent } from "./_layout/layout.component";
 
 const routes: Routes = [
@@ -48,7 +48,7 @@ const routes: Routes = [
       },
       {
         path: "updatesession/:id",
-        component: UpdateScoreComponent,
+        component: UpdateSessionComponent,
         resolve: {
           matchList: MatchService,
         },

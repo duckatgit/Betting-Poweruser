@@ -5,11 +5,11 @@ import { AuthService } from "src/app/modules/auth";
 import { MatchService } from "src/app/modules/auth/_services/creatematch.service";
 
 @Component({
-  selector: "app-update-score",
-  templateUrl: "./update-score.component.html",
-  styleUrls: ["./update-score.component.scss"],
+  selector: "app-update-session",
+  templateUrl: "./update-session.component.html",
+  styleUrls: ["./update-session.component.scss"],
 })
-export class UpdateScoreComponent implements OnInit {
+export class UpdateSessionComponent implements OnInit {
   sessionName: any;
   currentMatch: any;
   sessionTeamId: number = -1;

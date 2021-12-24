@@ -15,7 +15,8 @@ import { CeatePoweruserComponent } from "./ceate-poweruser/ceate-poweruser.compo
 import { PagesRoutingModule } from "./pages-routing.module";
 import { PowerUserComponent } from "./power-user/power-user.component";
 import { PowerUser1Component } from "./power-user1/power-user1.component";
-import { UpdateScoreComponent } from "./update-score/update-score.component";
+import { UpdateMatchScoreComponent } from "./update-match-score/update-match-score.component";
+import { UpdateSessionComponent } from "./update-session/update-session.component";
 import { AsideDynamicComponent } from "./_layout/components/aside-dynamic/aside-dynamic.component";
 import { AsideComponent } from "./_layout/components/aside/aside.component";
 import { FooterComponent } from "./_layout/components/footer/footer.component";
@@ -27,7 +28,6 @@ import { LanguageSelectorComponent } from "./_layout/components/topbar/language-
 import { TopbarComponent } from "./_layout/components/topbar/topbar.component";
 import { ScriptsInitComponent } from "./_layout/init/scipts-init/scripts-init.component";
 import { LayoutComponent } from "./_layout/layout.component";
-import { UpdateMatchScoreComponent } from './update-match-score/update-match-score.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { UpdateMatchScoreComponent } from './update-match-score/update-match-sco
     HeaderMenuDynamicComponent,
     PowerUserComponent,
     PowerUser1Component,
-    UpdateScoreComponent,
+    UpdateSessionComponent,
     AssignRoleComponent,
     CeatePoweruserComponent,
     UpdateMatchScoreComponent,
