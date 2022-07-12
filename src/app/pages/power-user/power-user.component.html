@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <td mat-cell *matCellDef="let row;let element;" style="">
-          <input type="text" [disabled]="element.locked" class="form-control" [(ngModel)]="element.khai" />
+          <input type="text" [disabled]="element.locked" class="form-control" [(ngModel)]="element.khai" (keyup.enter)="update(element)" />
           <mat-hint class="mat-error" *ngIf="element.error && (!element.khai || element.khai < element.lagai)">khai must
             be greater than lgai</mat-hint>
         </td>
@@ -44,7 +44,7 @@
       </tr>
       <tr>
         <td mat-cell *matCellDef="let row;let element;" style="">
-          <input type="text" [disabled]="element.locked" class="form-control" [(ngModel)]="element.lagai" />
+          <input type="text" [disabled]="element.locked" class="form-control" [(ngModel)]="element.lagai" (keyup.enter)="update(element)" />
           <mat-hint class="mat-error" *ngIf="element.error && !element.lagai">lagai is required</mat-hint>
         </td>
       </tr>
