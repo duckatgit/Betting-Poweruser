@@ -8,8 +8,8 @@ export const environment = {
   USERDATA_KEY: "authf649fc9a5f55",
   isMockEnabled: true,
   apiUrl:
-    "http://ec2-15-206-184-248.ap-south-1.compute.amazonaws.com/game-power-user",
-  base_url: "http://ec2-15-206-184-248.ap-south-1.compute.amazonaws.com",
+    "https://ec2-15-206-184-248.ap-south-1.compute.amazonaws.com/game-power-user",
+  base_url: "https://ec2-15-206-184-248.ap-south-1.compute.amazonaws.com",
 };
 
 /*
